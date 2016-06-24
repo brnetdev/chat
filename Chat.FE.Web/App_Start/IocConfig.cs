@@ -1,17 +1,12 @@
 ﻿using Castle.MicroKernel.Registration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Chat.FE.Web.App_Start
 {
-    public class IocConfig
+    public static class IocConfig
     {
         private static Castle.Windsor.WindsorContainer _container = new Castle.Windsor.WindsorContainer();
-
+        
         public static Castle.Windsor.WindsorContainer Container {
             get
             {
@@ -24,9 +19,7 @@ namespace Chat.FE.Web.App_Start
             _container.Register(Classes.FromThisAssembly()
                                  .BasedOn<IController>()
                                  .LifestyleTransient());
-
-            _container.Install();
-            //container.Register
+            _container.Install();            
         }
 
         public static void ReleaseContainer()
