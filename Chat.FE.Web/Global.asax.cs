@@ -10,10 +10,12 @@ using System.Web.Http;
 using Chat.FE.Web.Infrastructure.Identity;
 using Chat.FE.Web.App_Start;
 
+
 namespace Chat.FE.Web
 {
     public class Global : HttpApplication
     {
+        
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
@@ -27,12 +29,14 @@ namespace Chat.FE.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             IocConfig.RegisterComponents();
             
-            var castleControllerFactory = new CastleControllerFactory(container);
-
-            // Add the Controller Factory into the MVC web request pipeline
+            var castleControllerFactory = new Castle.Windsor.Mvc.WindsorControllerFactory(IocConfig.Container.Kernel);            
             ControllerBuilder.Current.SetControllerFactory(castleControllerFactory);
 
+        }
 
+        protected void Application_End()
+        {
+            IocConfig.ReleaseContainer();
         }
     }
 }

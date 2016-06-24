@@ -1,0 +1,16 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">        
+            @RenderBody()  
+    </div>
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/Bootstrap")
+</body>
+</html>
