@@ -1,0 +1,49 @@
+﻿@model Chat.FE.Web.Areas.Account.Models.AddUserNamePasswordVm
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Areas/Account/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        @using (Html.BeginForm("AddUser", "Account", FormMethod.Post, new { @class = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend>Rejestracja konta</legend>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Login)
+                    @Html.TextBoxFor(p => p.Login, new { @class = "form-control ", @placeholder = "Wprowadź login" })
+                    <div>
+                        @Html.ValidationMessageFor(p => p.Login)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Password)
+                    @Html.PasswordFor(p => p.Password, new { @class = "form-control ", @placeholder = "Wprowadź hasło" })
+                    <div>
+                        @Html.ValidationMessageFor(p => p.Password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Password2)
+                    @Html.PasswordFor(p => p.Password2, new { @class = "form-control ", @placeholder = "Powtórz hasło" })
+                    <div>
+                        @Html.ValidationMessageFor(p => p.Password2)
+                    </div>
+                </div>
+                <div class="form-group-lg">
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-block form-control">Zapisz</button>
+                    </div>
+                </div>
+            </fieldset>
+        }
+
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+
+
