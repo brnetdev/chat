@@ -1,5 +1,7 @@
 namespace Chat.FE.Web.Migrations
 {
+    using Infrastructure.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,6 +16,8 @@ namespace Chat.FE.Web.Migrations
 
         protected override void Seed(Chat.FE.Web.Infrastructure.Identity.AppIdentityDbContext context)
         {
+            
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

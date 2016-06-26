@@ -15,7 +15,7 @@ namespace Chat.FE.Web
         public void Configuration(IAppBuilder app)
         {
             app.CreatePerOwinContext(AppIdentityDbContext.Create);
-            app.CreatePerOwinContext<AppIdentityUserManager>(AppIdentityUserManager.Create);
+            app.CreatePerOwinContext(AppIdentityUserManager.Create);
             app.CreatePerOwinContext<AppIdentitySignInManager>(AppIdentitySignInManager.Create);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions

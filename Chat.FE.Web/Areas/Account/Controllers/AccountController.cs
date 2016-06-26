@@ -8,16 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.Owin;
+
 
 namespace Chat.FE.Web.Areas.Account.Controllers
 {
     public class AccountController : Controller
     {
         private readonly AppIdentityUserManager _userManager;
+        private readonly AppIdentityRoleManager _roleManager;
 
         public AccountController()
-        {            
-            _userManager = this.HttpContext.GetOwinContext().Get<AppIdentityUserManager>(typeof(AppIdentityUserManager).ToString());
+        {
+            _userManager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<AppIdentityUserManager>();
+            _roleManager = System.Web.HttpContext.Current.GetOwinContext().Get<AppIdentityRoleManager>();
         }
 
         public ActionResult Index()
@@ -25,7 +29,7 @@ namespace Chat.FE.Web.Areas.Account.Controllers
             List<IdentityUser> users = _userManager.Users.ToList();
             return View(users);
         }
-        
+
         public ActionResult AddUser()
         {
             AddUserNamePasswordVm vm = new AddUserNamePasswordVm();
@@ -38,14 +42,20 @@ namespace Chat.FE.Web.Areas.Account.Controllers
         {
             if (ViewData.ModelState.IsValid)
             {
+                var hasher = new Microsoft.AspNet.Identity.PasswordHasher();
+
                 IdentityUser user = new IdentityUser()
                 {
+                    Id = Guid.NewGuid().ToString(),
                     UserName = vm.Login,
-                    PasswordHash = Encoding.Default.GetString(System.Security.Cryptography.MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(vm.Password)))
+                    PasswordHash = hasher.HashPassword(vm.Password)
                 };
-                user.Roles.Add(new IdentityUserRole() { });
-                await _userManager.CreateAsync(user);
-                return RedirectToAction("Index", "Account", new { area = "Admin" });
+
+                _userManager.CreateAsync(user).Wait();
+                await _userManager.AddToRoleAsync(user.Id, "users");
+
+
+                return RedirectToAction("Index", "Account", new { area = "Account" });
             }
             else
             {
@@ -56,6 +66,16 @@ namespace Chat.FE.Web.Areas.Account.Controllers
         public async Task<ActionResult> RemoveUser(string userName)
         {
             throw new NotImplementedException();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+            
+            }
+            base.Dispose(disposing);
+
         }
 
 

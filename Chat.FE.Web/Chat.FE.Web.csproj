@@ -17,7 +17,7 @@
     <RootNamespace>Chat.FE.Web</RootNamespace>
     <AssemblyName>Chat.FE.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -208,6 +208,7 @@
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Style.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -327,6 +328,7 @@
     <Content Include="Areas\Account\Views\web.config" />
     <Content Include="Areas\Account\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Account\Views\SignIn\Login.cshtml" />
+    <Content Include="Areas\Account\Views\Account\AddUser.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1107,6 +1109,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Identity\AppIdentityDbContext.cs" />
+    <Compile Include="Infrastructure\Identity\AppIdentityRoleManager.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentitySignInManager.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentityUserManager.cs" />
     <Compile Include="Migrations\201606231946041_IdentityInitializer.cs" />
@@ -1131,7 +1134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Account\Views\Account\" />
+    <Folder Include="Hubs\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -1154,6 +1157,12 @@
       <DependentUpon>201606231946041_IdentityInitializer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chat.Common\Chat.Common.csproj">
+      <Project>{4d1df52d-7751-419d-a528-47567efc1f81}</Project>
+      <Name>Chat.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -1170,7 +1179,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62959</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Chat.FE.Web</IISUrl>
+          <IISUrl>http://localhost:62959/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -26,6 +26,6 @@ namespace Chat.FE.Web.Areas.Account.Models
         [Display(Name = "Powtórz hasło")]
         [DataType(DataType.Password)]
         [Required]
-        public string RenewPassword { get; set; }
+        public string Password2 { get; set; }
     }
 }
