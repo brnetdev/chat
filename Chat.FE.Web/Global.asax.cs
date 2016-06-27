@@ -21,14 +21,12 @@ namespace Chat.FE.Web
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            
-
+                        
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);         
                         
-            var castleControllerFactory = new Castle.Windsor.Mvc.WindsorControllerFactory(IocConfig.Container.Kernel);            
+            var castleControllerFactory = new Castle.Windsor.Mvc.WindsorControllerFactory(IocConfig.Container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(castleControllerFactory);
 
             QueueManager.CreateQueues();

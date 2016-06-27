@@ -11,7 +11,16 @@
     <div class="container">        
             @RenderBody()  
     </div>
-    @Scripts.Render("~/Scripts/jquery")
-    @Scripts.Render("~/Scripts/Bootstrap")
+    @*//@Scripts.Render("~/Scripts/jquery")*@
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/signalr/js"></script>
+    <script>
+        $.hubConnection().logging = true;
+        $.hubConnection().start({jsonp: true});
+        
+    </script>
+    @*@Scripts.Render("~/Scripts/Bootstrap")*@
+    
 </body>
 </html>

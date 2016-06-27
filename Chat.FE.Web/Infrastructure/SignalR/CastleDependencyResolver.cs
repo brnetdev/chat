@@ -21,14 +21,27 @@ namespace Chat.FE.Web.Infrastructure.SignalR
         }
 
         public override object GetService(Type serviceType)
-        {          
-            return _container.Resolve(serviceType) ?? base.GetService(serviceType);
+        {
+            if (_container.Kernel.HasComponent(serviceType))
+            {
+                return _container.Resolve(serviceType);
+            }
+            return base.GetService(serviceType);
             
         }
 
         public override IEnumerable<object> GetServices(Type serviceType)
         {
-            
+            //IEnumerable<object> objects;
+
+            //if (_container.Kernel.HasComponent(serviceType))
+            //{
+            //    objects = _container.ResolveAll(serviceType).Cast<object>();
+            //}
+            //else
+            //{
+            //    objecdt
+            //}
             return _container.ResolveAll(serviceType).Cast<object>().ToList().Concat(base.GetServices(serviceType));
         }
 
