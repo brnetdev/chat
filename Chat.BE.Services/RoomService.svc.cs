@@ -9,8 +9,7 @@ using System.Text;
 using Chat.BE.Contracts.DTO;
 
 namespace Chat.BE.Services
-{
-    [ServiceBehavior(ConcurrencyMode=ConcurrencyMode.Single)]
+{    
     public class RoomService : IRoomService
     {        
         public void Add(RoomDTO room)

@@ -26,7 +26,7 @@ namespace Chat.FE.Web
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            IocConfig.RegisterComponents();
+            
                         
             var castleControllerFactory = new Castle.Windsor.Mvc.WindsorControllerFactory(IocConfig.Container.Kernel);            
             ControllerBuilder.Current.SetControllerFactory(castleControllerFactory);

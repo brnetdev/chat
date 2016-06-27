@@ -1108,10 +1108,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\TechHub.cs" />
+    <Compile Include="Infrastructure\Common\ContextHelper.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentityDbContext.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentityRoleManager.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentitySignInManager.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentityUserManager.cs" />
+    <Compile Include="Infrastructure\SignalR\CastleDependencyResolver.cs" />
     <Compile Include="Migrations\201606231946041_IdentityInitializer.cs" />
     <Compile Include="Migrations\201606231946041_IdentityInitializer.Designer.cs">
       <DependentUpon>201606231946041_IdentityInitializer.cs</DependentUpon>
@@ -1134,8 +1138,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Hubs\" />
     <Folder Include="Models\" />
+    <Folder Include="www\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
