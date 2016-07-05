@@ -25,7 +25,7 @@ namespace Chat.FE.Web.Areas.Account.Controllers
             _userManager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<AppIdentityUserManager>();            
         }
 
-        // GET: Account/SignIn
+        [AllowAnonymous]
         public ActionResult Login()
         {
             UserNamePasswordVm vm = new UserNamePasswordVm();
@@ -33,6 +33,7 @@ namespace Chat.FE.Web.Areas.Account.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(UserNamePasswordVm vm)
         {

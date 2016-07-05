@@ -1,24 +1,20 @@
-namespace Chat.FE.Web.Migrations
+namespace Chat.BE.Data.Migrations
 {
-    using Infrastructure.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Chat.FE.Web.Infrastructure.Identity.AppIdentityDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Chat.BE.Data.Db>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "Identity";
+            ContextKey = "Chat";
         }
 
-        protected override void Seed(Chat.FE.Web.Infrastructure.Identity.AppIdentityDbContext context)
+        protected override void Seed(Chat.BE.Data.Db context)
         {
-            
-
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

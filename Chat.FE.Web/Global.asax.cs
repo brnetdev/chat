@@ -21,10 +21,12 @@ namespace Chat.FE.Web
 
         protected void Application_Start(object sender, EventArgs e)
         {
-                        
+            //groch z kapustą, nieporządek...i tak juz zostanie 
+                                    
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);         
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalFilters.Filters.Add(new System.Web.Mvc.AuthorizeAttribute());
                         
             var castleControllerFactory = new Castle.Windsor.Mvc.WindsorControllerFactory(IocConfig.Container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(castleControllerFactory);

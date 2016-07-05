@@ -1,17 +1,61 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
-<html>
+<html lang="pl">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
 </head>
-<body>
-    <div> 
+<body data-ng-app="app" data-ng-cloak data-ng-controller="MainController">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="jumbotron">
+                    <h1>Chat</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3" data-ng-controller="UsersController">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Users</div>
+                    <div class="panel-body"></div>
+                </div>                
+            </div>
+            <div class="col-lg-6" data-ng-controller="ChatController">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Chat</div>
+                    <div class="panel-body"></div>
+                </div>
+            </div>
+            <div class="col-lg-3" data-ng-controller="RoomsController">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Rooms</div>
+                    <div class="panel-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div>
+        <!-- Tu modale -->
     </div>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/www/app.js"></script>
+    <script>
+        $(function () {
+            $.hubConnection().logging = true;
+            $.hubConnection().start({ jsonp: true });
+        });
+    </script>
 </body>
 </html>
