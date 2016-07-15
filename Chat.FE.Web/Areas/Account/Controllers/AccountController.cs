@@ -29,7 +29,7 @@ namespace Chat.FE.Web.Areas.Account.Controllers
             List<IdentityUser> users = _userManager.Users.ToList();
             return View(users);
         }
-
+        [AllowAnonymous]
         public ActionResult AddUser()
         {
             AddUserNamePasswordVm vm = new AddUserNamePasswordVm();
@@ -38,6 +38,7 @@ namespace Chat.FE.Web.Areas.Account.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> AddUser(AddUserNamePasswordVm vm)
         {
             if (ViewData.ModelState.IsValid)
