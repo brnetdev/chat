@@ -61,7 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Room\AddRoomCommand.cs" />
     <Compile Include="Config\DomainInstaller.cs" />
+    <Compile Include="Handlers\Command\AddRoomCommandHandler.cs" />
     <Compile Include="Handlers\Query\GetAllRoomsQueryHandler.cs" />
     <Compile Include="Mappings\Mappers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,9 +87,7 @@
       <Name>Chat.BE.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\Room\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

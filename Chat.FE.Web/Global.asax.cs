@@ -8,16 +8,13 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-
 namespace Chat.FE.Web
 {
     public class Global : HttpApplication
     {
         protected void Session_Start(object sender, EventArgs e)
-        {
-            
+        {            
         }
-
 
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -33,10 +30,10 @@ namespace Chat.FE.Web
 
             QueueManager.CreateQueues();
 
-            using (AppIdentityDbContext db = new AppIdentityDbContext())
-            {
-                db.Database.Initialize(false);
-            }
+            //using (AppIdentityDbContext db = new AppIdentityDbContext())
+            //{                
+            //    db.Database.Initialize(false);
+            //}
 
             var roleManager = AppIdentityRoleManager.Create();
             if (!roleManager.RoleExistsAsync("users").Result)

@@ -29,6 +29,7 @@ namespace Chat.FE.Web.Areas.Account.Controllers
             List<IdentityUser> users = _userManager.Users.ToList();
             return View(users);
         }
+
         [AllowAnonymous]
         public ActionResult AddUser()
         {
@@ -66,15 +67,14 @@ namespace Chat.FE.Web.Areas.Account.Controllers
 
         public async Task<ActionResult> RemoveUser(string userName)
         {
+            //bla bla bla
             throw new NotImplementedException();
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
+            //if (disposing) {}
             
-            }
             base.Dispose(disposing);
 
         }

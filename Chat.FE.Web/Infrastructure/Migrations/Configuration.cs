@@ -1,11 +1,6 @@
 namespace Chat.FE.Web.Migrations
 {
-    using Infrastructure.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Chat.FE.Web.Infrastructure.Identity.AppIdentityDbContext>
     {

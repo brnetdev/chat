@@ -12,7 +12,7 @@ namespace Chat.FE.Web.Infrastructure.Identity
     {
         public AppIdentityDbContext() : base("cs")
         {
-            Database.SetInitializer <AppIdentityDbContext>(new MigrateDatabaseToLatestVersion<AppIdentityDbContext, Migrations.Configuration>());
+            Database.SetInitializer<AppIdentityDbContext>(new MigrateDatabaseToLatestVersion<AppIdentityDbContext, Migrations.Configuration>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
