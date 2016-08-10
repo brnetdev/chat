@@ -43,7 +43,7 @@ namespace Chat.FE.Web
                 EnableDetailedErrors = true,
                 EnableJavaScriptProxies = true,
                 Resolver = new CastleDependencyResolver(IocConfig.Container),
-                EnableJSONP = true
+                EnableJSONP = true                
             });
 
 

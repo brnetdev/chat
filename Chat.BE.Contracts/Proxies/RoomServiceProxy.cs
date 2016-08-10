@@ -36,7 +36,15 @@ namespace Chat.BE.Contracts.Proxies
 
         public IEnumerable<RoomDTO> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _proxy.GetAll();
+            }
+            catch(FaultException<FaultDataContract> exc)
+            {
+                //TODO logger
+                return null;
+            }
         }
 
         public void Remove(int id)

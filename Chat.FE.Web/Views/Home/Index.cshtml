@@ -40,12 +40,12 @@
         </div>
     </div>    
     <div>
-        <!-- Tu modale -->
+        <!-- Tu modale -->        
     </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-    <script src="~/signalr/js"></script>
+    <script src="~/signalr/js"></script>    
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
@@ -54,7 +54,7 @@
     <script>
         $(function () {
             $.hubConnection().logging = true;
-            $.hubConnection().start({ jsonp: true });
+            $.hubConnection(@Url.Content("~")).start({ jsonp: true });
         });
     </script>
 </body>

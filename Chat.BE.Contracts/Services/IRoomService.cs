@@ -53,7 +53,7 @@ namespace Chat.BE.Contracts
         public IEnumerable<RoomDTO> GetAll()
         {
             Contract.Ensures(Contract.Result<IEnumerable<RoomDTO>>() != null);
-            Contract.Ensures(Contract.Result<IEnumerable<RoomDTO>>().Any());
+            //Contract.Ensures(Contract.Result<IEnumerable<RoomDTO>>().Any());
 
             return default (IEnumerable<RoomDTO>);
         }
