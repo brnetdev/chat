@@ -1,4 +1,5 @@
-﻿module app.controllers {
+﻿/// <reference path="../app.ts" />
+module app.controllers {
     export interface IMainController {
         
     }
@@ -9,8 +10,8 @@
         public static $inject = ["$scope"];
         constructor($scope: ng.IScope) {
             this.scope = $scope;
-
         }
 
     }
+    angular.module('app').controller('MainController', MainController);
 }

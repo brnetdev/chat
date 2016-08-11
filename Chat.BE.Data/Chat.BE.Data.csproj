@@ -58,6 +58,10 @@
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Room.cs" />
     <Compile Include="Mappings\RoomEntityConfiguration.cs" />
+    <Compile Include="Migrations\201608102243038_Initialization_Domain.cs" />
+    <Compile Include="Migrations\201608102243038_Initialization_Domain.Designer.cs">
+      <DependentUpon>201608102243038_Initialization_Domain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,7 +69,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608102243038_Initialization_Domain.resx">
+      <DependentUpon>201608102243038_Initialization_Domain.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

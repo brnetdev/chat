@@ -1,3 +1,4 @@
+/// <reference path="../app.ts" />
 var app;
 (function (app) {
     var controllers;
@@ -10,6 +11,6 @@ var app;
             return MainController;
         }());
         controllers.MainController = MainController;
+        angular.module('app').controller('MainController', MainController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-//# sourceMappingURL=MainController.js.map

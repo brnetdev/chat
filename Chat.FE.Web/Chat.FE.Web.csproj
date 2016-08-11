@@ -1157,8 +1157,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Infrastructure\Migrations\Models\" />
     <Folder Include="www\filters\" />
-    <Folder Include="www\models\" />
-    <Folder Include="www\services\" />
     <Folder Include="www\views\" />
   </ItemGroup>
   <ItemGroup>
@@ -1173,8 +1171,18 @@
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\signalr\signalr-1.0.d.ts" />
     <TypeScriptCompile Include="www\app.ts" />
+    <TypeScriptCompile Include="www\controllers\BaseController.ts" />
+    <TypeScriptCompile Include="www\controllers\ChatController.ts" />
     <TypeScriptCompile Include="www\controllers\MainController.ts" />
+    <TypeScriptCompile Include="www\controllers\RoomsController.ts" />
+    <TypeScriptCompile Include="www\controllers\UsersController.ts" />
     <TypeScriptCompile Include="www\directives\modalDialog\modalDialog.ts" />
+    <TypeScriptCompile Include="www\events\Events.ts" />
+    <TypeScriptCompile Include="www\models\Chat.ts" />
+    <TypeScriptCompile Include="www\models\Room.ts" />
+    <TypeScriptCompile Include="www\models\User.ts" />
+    <TypeScriptCompile Include="www\services\RoomsService.ts" />
+    <TypeScriptCompile Include="www\services\UsersService.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

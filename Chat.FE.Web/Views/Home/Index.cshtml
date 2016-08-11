@@ -23,7 +23,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Users</div>
                     <div class="panel-body"></div>
-                </div>                
+                </div>
             </div>
             <div class="col-lg-6" data-ng-controller="ChatController">
                 <div class="panel panel-default">
@@ -38,19 +38,31 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <div>
-        <!-- Tu modale -->        
+        <!-- Tu modale -->
     </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-    <script src="~/signalr/js"></script>    
+    <script src="~/signalr/js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/www/app.js"></script>
+    <!-- models -->
+    <script src="~/www/models/Room.js"></script>
+    <script src="~/www/models/User.js"></script>
+    <!-- services -->
+    <script src="~/www/services/RoomsService.js"></script>
+    <script src="~/www/services/UsersService.js"></script>
+    <!-- controllers -->
+    <script src="~/www/controllers/BaseController.js"></script>
+    <script src="~/www/controllers/MainController.js"></script>
+    <script src="~/www/controllers/UsersController.js"></script>
+    <script src="~/www/controllers/RoomsController.js"></script>
+    <script src="~/www/controllers/ChatController.js"></script>
     <script>
         $(function () {
             $.hubConnection().logging = true;

@@ -20,6 +20,7 @@ namespace Chat.BE.Contracts.Proxies
             _factory = new ChannelFactory<IRoomService>("cliConf");
             _proxy = _factory.CreateChannel();
             
+            
         }
 
         public void Add(RoomDTO room)
@@ -38,7 +39,8 @@ namespace Chat.BE.Contracts.Proxies
         {
             try
             {
-                return _proxy.GetAll();
+                var data = _proxy.GetAll();
+                return data;
             }
             catch(FaultException<FaultDataContract> exc)
             {
