@@ -12,8 +12,12 @@ var app;
             function ChatController() {
                 _super.apply(this, arguments);
             }
+            ChatController.prototype.registerEvents = function () {
+            };
             return ChatController;
         }(controllers.BaseController));
         controllers.ChatController = ChatController;
+        angular.module('app').controller('ChatController', ChatController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=ChatController.js.map

@@ -14,6 +14,7 @@ var app;
             return RoomService;
         }());
         services.RoomService = RoomService;
-        angular.module('app').service('RoomService', RoomService);
+        angular.module('app').service('roomsService', RoomService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=RoomsService.js.map

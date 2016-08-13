@@ -16,5 +16,5 @@ module app.services {
         }
     }
 
-    angular.module('app').service('RoomService', RoomService);
+    angular.module('app').service('roomsService', RoomService);
 }

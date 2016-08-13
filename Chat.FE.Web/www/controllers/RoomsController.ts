@@ -10,12 +10,12 @@ module app.controllers {
     
     export class RoomsController implements IRoomsController {
 
-        public static inject = ['$scope', 'roomService'];
-        constructor(private $scope: IRoomsScope, private roomService: app.services.IRoomsService) {                        
+        public static inject = ['$scope', 'roomsService'];
+        constructor(private $scope: IRoomsScope, private roomsService: app.services.IRoomsService) {                        
         }
 
         public getRooms(): void {
-            this.$scope.rooms = this.roomService.getRooms();
+            this.$scope.rooms = this.roomsService.getRooms();
         }
 
         private registerEvents(): void {

@@ -11,3 +11,4 @@ var app;
         controllers.BaseController = BaseController;
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=BaseController.js.map
