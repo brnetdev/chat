@@ -15,16 +15,17 @@ namespace Chat.FE.Web.App_Start
                 "~/Scripts/Bootstrap.js"));
 
 
-            bundles.Add(new ScriptBundle("~/www/app").Include("~/www/app.js"));
-            bundles.Add(new ScriptBundle("~/www/models").Include(
+            bundles.Add(new ScriptBundle("~/bundles/app").Include("~/www/app.js"));
+            bundles.Add(new ScriptBundle("~/bundles/test").Include("~/www/test.js"));
+            bundles.Add(new ScriptBundle("~/bundles/models").Include(
                 "~/www/models/Room.js",
                 "~/www/models/User.js"
                 ));
-            bundles.Add(new ScriptBundle("~/www/services").Include(
+            bundles.Add(new ScriptBundle("~/bundles/services").Include(
                 "~/www/services/RoomsService.js",
                 "~/www/services/UsersService.js"
                 ));
-            bundles.Add(new ScriptBundle("~/www/controllers").Include(
+            bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
                 "~/www/controllers/BaseController.js",
                 "~/www/controllers/MainController.js",
                 "~/www/controllers/UsersController.js",
@@ -32,7 +33,7 @@ namespace Chat.FE.Web.App_Start
                 "~/www/controllers/ChatController.js"
                 ));
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
 
 
 

@@ -340,6 +340,7 @@
     <Content Include="Areas\Account\Views\SignIn\Login.cshtml" />
     <Content Include="Areas\Account\Views\Account\AddUser.cshtml" />
     <Content Include="www\directives\modalDialog\modalDialogView.html" />
+    <Content Include="www\test.js" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1108,6 +1109,7 @@
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\version.json" />
+    <Content Include="www\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundlesConfig.cs" />

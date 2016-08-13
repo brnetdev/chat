@@ -51,20 +51,7 @@
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <!-- app -->
-    <script src="~/www/app.js"></script>
-    <!-- models -->
-    <script src="~/www/models/Room.js"></script>
-    <script src="~/www/models/User.js"></script>
-    <!-- services -->
-    <script src="~/www/services/RoomsService.js"></script>
-    <script src="~/www/services/UsersService.js"></script>
-    <!-- controllers -->
-    <script src="~/www/controllers/BaseController.js"></script>
-    <script src="~/www/controllers/MainController.js"></script>
-    <script src="~/www/controllers/UsersController.js"></script>
-    <script src="~/www/controllers/RoomsController.js"></script>
-    <script src="~/www/controllers/ChatController.js"></script>
+    @Scripts.Render("~/bundles/test"@*, "~/models", "~/services", "~/controllers"*@)    
     <script>
         $(function () {
             $.hubConnection().logging = true;
