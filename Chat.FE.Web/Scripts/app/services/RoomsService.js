@@ -8,7 +8,11 @@ var app;
                 this.$http = $http;
             }
             RoomService.prototype.getRooms = function () {
-                return [];
+                var resp;
+                this.$http.get('/Chat.FE.Web/api/Rooms').then(function (response) {
+                    resp = response.data;
+                });
+                return resp;
             };
             RoomService.$inject = ['$http'];
             return RoomService;

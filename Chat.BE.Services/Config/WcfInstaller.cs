@@ -15,7 +15,7 @@ namespace Chat.BE.Services.Config
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<IRoomService>().ImplementedBy<RoomService>().Named("RoomService").LifestylePerWcfOperation());
+            container.Register(Component.For<IRoomService>().ImplementedBy<RoomService>().Named("Chat.BE.Services.RoomService").LifestylePerWcfOperation());
         }
     }
 }

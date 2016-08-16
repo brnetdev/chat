@@ -1,4 +1,5 @@
 ﻿/// <reference path="../models/room.ts" />
+/// <reference path="basecontroller.ts" />
 module app.controllers {
     export interface IRoomsController {
         getRooms(): void;
@@ -8,20 +9,23 @@ module app.controllers {
         rooms: app.models.Room[];
     }
     
-    export class RoomsController implements IRoomsController {
+    export class RoomsController extends BaseController implements IRoomsController {
 
-        public static inject = ['$scope', 'roomsService'];
+        public static $inject = ['$scope', 'roomsService'];
         constructor(private $scope: IRoomsScope, private roomsService: app.services.IRoomsService) {                        
+            //sciope rooms z getRooms
+            super();
+            this.$scope.rooms = this.getRooms();
         }
 
-        public getRooms(): void {
-            this.$scope.rooms = this.roomsService.getRooms();
+        public getRooms(): app.models.Room[] {
+            return this.roomsService.getRooms();
         }
 
-        private registerEvents(): void {
+        public registerEvents(): void {
             this.$scope.$on(app.events.RoomsEvents.RoomAdded, (event) => {
                 // tu cialo eventu
-
+                this.$scope.rooms = this.getRooms();
             });
         }
     }

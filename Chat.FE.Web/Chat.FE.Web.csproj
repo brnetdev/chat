@@ -142,6 +142,7 @@
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
       <Private>True</Private>
@@ -339,8 +340,7 @@
     <Content Include="Areas\Account\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Account\Views\SignIn\Login.cshtml" />
     <Content Include="Areas\Account\Views\Account\AddUser.cshtml" />
-    <Content Include="www\directives\modalDialog\modalDialogView.html" />
-    <Content Include="www\test.js" />
+    <Content Include="Scripts\app\directives\modalDialog\modalDialogView.html" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1107,9 +1107,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\version.json" />
-    <Content Include="www\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundlesConfig.cs" />
@@ -1158,8 +1159,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Infrastructure\Migrations\Models\" />
-    <Folder Include="www\filters\" />
-    <Folder Include="www\views\" />
+    <Folder Include="Scripts\app\filters\" />
+    <Folder Include="Scripts\app\views\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
@@ -1172,19 +1173,19 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\signalr\signalr-1.0.d.ts" />
-    <TypeScriptCompile Include="www\app.ts" />
-    <TypeScriptCompile Include="www\controllers\BaseController.ts" />
-    <TypeScriptCompile Include="www\controllers\ChatController.ts" />
-    <TypeScriptCompile Include="www\controllers\MainController.ts" />
-    <TypeScriptCompile Include="www\controllers\RoomsController.ts" />
-    <TypeScriptCompile Include="www\controllers\UsersController.ts" />
-    <TypeScriptCompile Include="www\directives\modalDialog\modalDialog.ts" />
-    <TypeScriptCompile Include="www\events\Events.ts" />
-    <TypeScriptCompile Include="www\models\Chat.ts" />
-    <TypeScriptCompile Include="www\models\Room.ts" />
-    <TypeScriptCompile Include="www\models\User.ts" />
-    <TypeScriptCompile Include="www\services\RoomsService.ts" />
-    <TypeScriptCompile Include="www\services\UsersService.ts" />
+    <TypeScriptCompile Include="Scripts\app\app.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\BaseController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\ChatController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\MainController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\RoomsController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\UsersController.ts" />
+    <TypeScriptCompile Include="Scripts\app\directives\modalDialog\modalDialog.ts" />
+    <TypeScriptCompile Include="Scripts\app\events\Events.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\Chat.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\Room.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\User.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\RoomsService.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\UsersService.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

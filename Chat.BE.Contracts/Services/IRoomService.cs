@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Chat.BE.Contracts
 {
-    [ContractClass(typeof(RoomServiceContractClass))]
+    //[ContractClass(typeof(RoomServiceContractClass))]
     [ServiceContract]
     public interface IRoomService
     {
@@ -40,29 +40,29 @@ namespace Chat.BE.Contracts
         
     }
 
-    [ContractClassFor(typeof(IRoomService))]
-    public class RoomServiceContractClass : IRoomService
-    {
-        public void Add(RoomDTO room)
-        {
-            Contract.Requires(room != null);
-            Contract.Requires(!string.IsNullOrEmpty(room.Name));
+    ////[ContractClassFor(typeof(IRoomService))]
+    //public class RoomServiceContractClass : IRoomService
+    //{
+    //    public void Add(RoomDTO room)
+    //    {
+    //        Contract.Requires(room != null);
+    //        Contract.Requires(!string.IsNullOrEmpty(room.Name));
 
-        }
+    //    }
 
-        public IEnumerable<RoomDTO> GetAll()
-        {
-            Contract.Ensures(Contract.Result<IEnumerable<RoomDTO>>() != null);
-            //Contract.Ensures(Contract.Result<IEnumerable<RoomDTO>>().Any());
+    //    public IEnumerable<RoomDTO> GetAll()
+    //    {
+    //        Contract.Ensures(Contract.Result<IEnumerable<RoomDTO>>() != null);
+    //        //Contract.Ensures(Contract.Result<IEnumerable<RoomDTO>>().Any());
 
-            return default (IEnumerable<RoomDTO>);
-        }
+    //        return default (IEnumerable<RoomDTO>);
+    //    }
 
-        public void Remove(int id)
-        {
-            Contract.Requires(id > 0);
-        }
-    }
+    //    public void Remove(int id)
+    //    {
+    //        Contract.Requires(id > 0);
+    //    }
+    //}
 
 
 }

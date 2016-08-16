@@ -6,6 +6,7 @@ using System;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace Chat.FE.Web
@@ -19,8 +20,9 @@ namespace Chat.FE.Web
         protected void Application_Start(object sender, EventArgs e)
         {
             //groch z kapustą, nieporządek...i tak juz zostanie 
-                                    
+                                                
             AreaRegistration.RegisterAllAreas();
+            BundlesConfig.RegisterBundles(BundleTable.Bundles);
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             GlobalFilters.Filters.Add(new System.Web.Mvc.AuthorizeAttribute());                        

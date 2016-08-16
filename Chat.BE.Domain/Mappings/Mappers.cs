@@ -19,6 +19,8 @@ namespace Chat.BE.Domain.Mappings
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<RoomDTO, Room>();
                 cfg.CreateMap<Room, RoomDTO>();
+                cfg.CreateMap<List<RoomDTO>, List<Room>>();
+                cfg.CreateMap<List<Room>, List<RoomDTO>>();
 
             });
             _mapper = Mapper.Instance;

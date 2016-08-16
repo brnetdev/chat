@@ -12,7 +12,11 @@ module app.services {
         }
 
         getRooms(): app.models.IRoom[] {
-            return [];
+            var resp;
+            this.$http.get('/Chat.FE.Web/api/Rooms').then(function (response) {
+                resp  = <app.models.IRoom[]>response.data;
+            });
+            return resp;
         }
     }
 

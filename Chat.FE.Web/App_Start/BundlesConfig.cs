@@ -15,22 +15,21 @@ namespace Chat.FE.Web.App_Start
                 "~/Scripts/Bootstrap.js"));
 
 
-            bundles.Add(new ScriptBundle("~/bundles/app").Include("~/www/app.js"));
-            bundles.Add(new ScriptBundle("~/bundles/test").Include("~/www/test.js"));
-            bundles.Add(new ScriptBundle("~/bundles/models").Include(
-                "~/www/models/Room.js",
-                "~/www/models/User.js"
+            bundles.Add(new ScriptBundle("~/Scripts/appBundle").Include("~/Scripts/app/app.js"));            
+            bundles.Add(new ScriptBundle("~/Scripts/models").Include(
+                "~/Scripts/app/models/Room.js",
+                "~/Scripts/app/models/User.js"
                 ));
-            bundles.Add(new ScriptBundle("~/bundles/services").Include(
-                "~/www/services/RoomsService.js",
-                "~/www/services/UsersService.js"
+            bundles.Add(new ScriptBundle("~/Scripts/services").Include(
+                "~/Scripts/app/services/RoomsService.js",
+                "~/Scripts/app/services/UsersService.js"
                 ));
-            bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
-                "~/www/controllers/BaseController.js",
-                "~/www/controllers/MainController.js",
-                "~/www/controllers/UsersController.js",
-                "~/www/controllers/RoomsController.js",
-                "~/www/controllers/ChatController.js"
+            bundles.Add(new ScriptBundle("~/Scripts/controllers").Include(
+                "~/Scripts/app/controllers/BaseController.js",
+                "~/Scripts/app/controllers/MainController.js",
+                "~/Scripts/app/controllers/UsersController.js",
+                "~/Scripts/app/controllers/RoomsController.js",
+                "~/Scripts/app/controllers/ChatController.js"
                 ));
 
             BundleTable.EnableOptimizations = false;

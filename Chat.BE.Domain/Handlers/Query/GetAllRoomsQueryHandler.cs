@@ -11,10 +11,12 @@ namespace Chat.BE.Domain.Handlers.Query
         public GetAllRoomsQueryResult Handle(GetAllRoomsQuery query)
         {            
             var res = new GetAllRoomsQueryResult();
-
+            res.Rooms = new System.Collections.Generic.List<Contracts.DTO.RoomDTO>();
+            
             using (Db db = new Db())
             {
-                res.Rooms = db.Rooms.ToList().ToDTOCollection();
+                var rooms = db.Rooms.ToList();
+                rooms.ForEach(r => res.Rooms.Add(new Contracts.DTO.RoomDTO { Id = r.Id, Descritpion = r.Description, Name = r.Title }));
             }
                         
             return res;                        

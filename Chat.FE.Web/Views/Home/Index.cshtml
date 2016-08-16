@@ -35,7 +35,9 @@
             <div class="col-lg-3" data-ng-controller="RoomsController">
                 <div class="panel panel-default">
                     <div class="panel-heading">Rooms</div>
-                    <div class="panel-body"></div>
+                    <div class="panel-body">
+                        <div ng-repeat="room in rooms">{{room.name}}</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,7 +53,7 @@
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    @Scripts.Render("~/bundles/test"@*, "~/models", "~/services", "~/controllers"*@)    
+    @Scripts.Render("~/Scripts/appBundle", "~/Scripts/models", "~/Scripts/services", "~/Scripts/controllers")    
     <script>
         $(function () {
             $.hubConnection().logging = true;

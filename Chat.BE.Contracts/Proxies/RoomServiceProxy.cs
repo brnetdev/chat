@@ -10,15 +10,16 @@ using Chat.BE.Contracts.Faults;
 
 namespace Chat.BE.Contracts.Proxies
 {
-    public class RoomServiceProxy : IRoomService, IDisposable
+    public class RoomServiceProxy : ClientBase<IRoomService>, IRoomService
     {
-        private readonly ChannelFactory<IRoomService> _factory;
-        private readonly IRoomService _proxy;
+        //private readonly ChannelFactory<IRoomService> _factory;
+        //private readonly IRoomService _proxy;
 
-        public RoomServiceProxy()
+        public RoomServiceProxy(): base("cliConf")
         {
-            _factory = new ChannelFactory<IRoomService>("cliConf");
-            _proxy = _factory.CreateChannel();
+            //_factory = new ChannelFactory<IRoomService>("cliConf");
+            
+            //_proxy = _factory.CreateChannel();
             
             
         }
@@ -27,7 +28,7 @@ namespace Chat.BE.Contracts.Proxies
         {
             try
             {
-                _proxy.Add(room);
+                this.Channel.Add(room);
             }
             catch(FaultException<FaultDataContract> exc)
             {
@@ -39,7 +40,7 @@ namespace Chat.BE.Contracts.Proxies
         {
             try
             {
-                var data = _proxy.GetAll();
+                var data = this.Channel.GetAll();
                 return data;
             }
             catch(FaultException<FaultDataContract> exc)
@@ -56,7 +57,7 @@ namespace Chat.BE.Contracts.Proxies
 
         public void Dispose()
         {
-            _factory.Close();
+           
         }
     }
 }

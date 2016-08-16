@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="RoomService" CodeBehind="RoomService.svc.cs" Factory="Castle.Facilities.WcfIntegration.DefaultServiceHostFactory, Castle.Facilities.WcfIntegration" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Chat.BE.Services.RoomService" CodeBehind="RoomService.svc.cs" Factory="Castle.Facilities.WcfIntegration.DefaultServiceHostFactory, Castle.Facilities.WcfIntegration" %>
