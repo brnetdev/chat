@@ -4,12 +4,14 @@ module app.controllers {
         
     }
 
-    export class MainController implements IMainController {
-        private scope: ng.IScope;
+    export interface IMainScope extends ng.IScope {
+        roomsLoaded: boolean;
+    }
 
+    export class MainController implements IMainController {
         public static $inject = ["$scope"];
-        constructor($scope: ng.IScope) {
-            this.scope = $scope;
+        constructor(private $scope: IMainScope) {
+            $scope.roomsLoaded = false;            
         }
 
     }

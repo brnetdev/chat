@@ -5,7 +5,8 @@ var app;
     (function (controllers) {
         var MainController = (function () {
             function MainController($scope) {
-                this.scope = $scope;
+                this.$scope = $scope;
+                $scope.roomsLoaded = false;
             }
             MainController.$inject = ["$scope"];
             return MainController;

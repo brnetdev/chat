@@ -12,20 +12,30 @@ var app;
         var RoomsController = (function (_super) {
             __extends(RoomsController, _super);
             function RoomsController($scope, roomsService) {
-                //sciope rooms z getRooms
                 _super.call(this);
                 this.$scope = $scope;
                 this.roomsService = roomsService;
-                this.$scope.rooms = this.getRooms();
+                this.registerEvents();
+                this.$scope.rooms = app.models.Room[1];
+                var rooms = this.getRooms();
+                debugger;
+                this.$scope.name = "Piotr";
             }
             RoomsController.prototype.getRooms = function () {
-                return this.roomsService.getRooms();
+                var _this = this;
+                this.roomsService.roomServiceCallback = function (rooms) {
+                    debugger;
+                    _this.$scope.rooms = rooms;
+                };
+                this.roomsService.getRooms();
+            };
+            RoomsController.prototype.setRooms = function (rooms) {
+                this.$scope.rooms = rooms;
             };
             RoomsController.prototype.registerEvents = function () {
                 var _this = this;
                 this.$scope.$on(app.events.RoomsEvents.RoomAdded, function (event) {
-                    // tu cialo eventu
-                    _this.$scope.rooms = _this.getRooms();
+                    _this.getRooms();
                 });
             };
             RoomsController.$inject = ['$scope', 'roomsService'];

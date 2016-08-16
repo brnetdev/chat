@@ -24,6 +24,11 @@ namespace Chat.FE.Web.App_Start
                 "~/Scripts/app/services/RoomsService.js",
                 "~/Scripts/app/services/UsersService.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/Scripts/events").Include(
+                "~/Scripts/app/events/Events.js"                
+                ));
+
             bundles.Add(new ScriptBundle("~/Scripts/controllers").Include(
                 "~/Scripts/app/controllers/BaseController.js",
                 "~/Scripts/app/controllers/MainController.js",

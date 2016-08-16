@@ -7,25 +7,36 @@ module app.controllers {
 
     export interface IRoomsScope extends ng.IScope {
         rooms: app.models.Room[];
+        name: string;
     }
     
     export class RoomsController extends BaseController implements IRoomsController {
 
         public static $inject = ['$scope', 'roomsService'];
-        constructor(private $scope: IRoomsScope, private roomsService: app.services.IRoomsService) {                        
-            //sciope rooms z getRooms
+        constructor(private $scope: IRoomsScope, private roomsService: app.services.IRoomsService) {                                
             super();
-            this.$scope.rooms = this.getRooms();
+            this.registerEvents();
+            this.$scope.rooms = app.models.Room[1];
+            var rooms = this.getRooms();
+            debugger;
+            this.$scope.name = "Piotr";
         }
 
-        public getRooms(): app.models.Room[] {
-            return this.roomsService.getRooms();
+        public getRooms(): void {
+            this.roomsService.roomServiceCallback = (rooms: app.models.IRoom[]) => {
+                debugger;
+                this.$scope.rooms = rooms;
+            }
+            this.roomsService.getRooms();
+        }
+
+        public setRooms(rooms: app.models.Room[]) {
+            this.$scope.rooms = rooms;
         }
 
         public registerEvents(): void {
-            this.$scope.$on(app.events.RoomsEvents.RoomAdded, (event) => {
-                // tu cialo eventu
-                this.$scope.rooms = this.getRooms();
+            this.$scope.$on(app.events.RoomsEvents.RoomAdded, (event) => {                
+                this.getRooms();
             });
         }
     }

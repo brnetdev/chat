@@ -10,7 +10,7 @@
     <link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Style.css" rel="stylesheet" />
 </head>
-<body data-ng-app="app" data-ng-cloak data-ng-controller="MainController">
+<body data-ng-app="app" data-ng-cloak data-ng-controller="MainController" ng-cloak>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-hide="roomsLoaded">
             <div class="col-lg-3" data-ng-controller="UsersController">
                 <div class="panel panel-default">
                     <div class="panel-heading">Users</div>
@@ -33,9 +33,10 @@
                 </div>
             </div>
             <div class="col-lg-3" data-ng-controller="RoomsController">
-                <div class="panel panel-default">
+                <div class="panel panel-default">                    
                     <div class="panel-heading">Rooms</div>
                     <div class="panel-body">
+                        {{name}}
                         <div ng-repeat="room in rooms">{{room.name}}</div>
                     </div>
                 </div>
@@ -53,7 +54,7 @@
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    @Scripts.Render("~/Scripts/appBundle", "~/Scripts/models", "~/Scripts/services", "~/Scripts/controllers")    
+    @Scripts.Render("~/Scripts/appBundle", "~/Scripts/models", "~/Scripts/services", "~/Scripts/events", "~/Scripts/controllers")    
     <script>
         $(function () {
             $.hubConnection().logging = true;
