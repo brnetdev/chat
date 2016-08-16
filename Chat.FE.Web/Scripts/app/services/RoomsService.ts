@@ -1,14 +1,18 @@
 ﻿/// <reference path="../models/room.ts" />
 module app.services {
+    declare type roomServiceCallback = (rooms: app.models.Room[]) => void;
+
     export interface IRoomsService {
-        roomServiceCallback: (rooms: app.models.Room[]) => void;
+        roomsCallback: roomServiceCallback;
         getRooms(): void;
     }
 
+    
+
     export class RoomService implements IRoomsService {
         //definiuje callback
-
-        public roomServiceCallback: (rooms: app.models.Room[]) => void;
+        
+        public roomsCallback: roomServiceCallback;
 
         public static $inject = ['$http'];
         constructor(private $http: ng.IHttpService) {
@@ -16,11 +20,12 @@ module app.services {
         }
 
         getRooms(): void {
-                        
+            var self = this;
             var respPromise = this.$http.get('/Chat.FE.Web/api/Rooms');
-
-            respPromise.then(function(result: app.models.IRoom[]) {
-                this.roomServiceCallback(<app.models.IRoom[]>result);
+            
+            respPromise.then(function (result: any) {
+                console.log('Promise returns', result.data);
+                self.roomsCallback(result.data);
             })
         }
     }

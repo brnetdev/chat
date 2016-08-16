@@ -23,9 +23,10 @@ module app.controllers {
         }
 
         public getRooms(): void {
-            this.roomsService.roomServiceCallback = (rooms: app.models.IRoom[]) => {
-                debugger;
-                this.$scope.rooms = rooms;
+            var self = this;
+            this.roomsService.roomsCallback = function (rooms: app.models.IRoom[]) {                            
+                console.log('RoomServiceCallback', rooms);
+                self.$scope.rooms = rooms;                
             }
             this.roomsService.getRooms();
         }

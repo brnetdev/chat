@@ -22,10 +22,10 @@ var app;
                 this.$scope.name = "Piotr";
             }
             RoomsController.prototype.getRooms = function () {
-                var _this = this;
-                this.roomsService.roomServiceCallback = function (rooms) {
-                    debugger;
-                    _this.$scope.rooms = rooms;
+                var self = this;
+                this.roomsService.roomsCallback = function (rooms) {
+                    console.log('RoomServiceCallback', rooms);
+                    self.$scope.rooms = rooms;
                 };
                 this.roomsService.getRooms();
             };

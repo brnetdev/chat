@@ -10,7 +10,7 @@
     <link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Style.css" rel="stylesheet" />
 </head>
-<body data-ng-app="app" data-ng-cloak data-ng-controller="MainController" ng-cloak>
+<body data-ng-app="app" data-ng-cloak data-ng-controller="MainController">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" ng-hide="roomsLoaded">
+        <div class="row" >
             <div class="col-lg-3" data-ng-controller="UsersController">
                 <div class="panel panel-default">
                     <div class="panel-heading">Users</div>
@@ -32,12 +32,11 @@
                     <div class="panel-body"></div>
                 </div>
             </div>
-            <div class="col-lg-3" data-ng-controller="RoomsController">
+            <div class="col-lg-3" data-ng-controller="RoomsController" ng-cloak>
                 <div class="panel panel-default">                    
                     <div class="panel-heading">Rooms</div>
-                    <div class="panel-body">
-                        {{name}}
-                        <div ng-repeat="room in rooms">{{room.name}}</div>
+                    <div class="panel-body">                        
+                        <div ng-repeat="room in rooms">{{room.Name}}</div>
                     </div>
                 </div>
             </div>

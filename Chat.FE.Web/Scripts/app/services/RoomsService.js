@@ -8,9 +8,11 @@ var app;
                 this.$http = $http;
             }
             RoomService.prototype.getRooms = function () {
+                var self = this;
                 var respPromise = this.$http.get('/Chat.FE.Web/api/Rooms');
                 respPromise.then(function (result) {
-                    this.roomServiceCallback(result);
+                    console.log('Promise returns', result.data);
+                    self.roomsCallback(result.data);
                 });
             };
             RoomService.$inject = ['$http'];
