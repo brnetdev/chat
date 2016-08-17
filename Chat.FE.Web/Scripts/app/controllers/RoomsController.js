@@ -24,7 +24,6 @@ var app;
             RoomsController.prototype.getRooms = function () {
                 var self = this;
                 this.roomsService.roomsCallback = function (rooms) {
-                    console.log('RoomServiceCallback', rooms);
                     self.$scope.rooms = rooms;
                 };
                 this.roomsService.getRooms();
@@ -45,4 +44,3 @@ var app;
         angular.module('app').controller('RoomsController', RoomsController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-//# sourceMappingURL=RoomsController.js.map

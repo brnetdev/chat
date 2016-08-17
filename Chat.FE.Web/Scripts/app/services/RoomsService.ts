@@ -23,8 +23,7 @@ module app.services {
             var self = this;
             var respPromise = this.$http.get('/Chat.FE.Web/api/Rooms');
             
-            respPromise.then(function (result: any) {
-                console.log('Promise returns', result.data);
+            respPromise.then(function (result: any) {                
                 self.roomsCallback(result.data);
             })
         }

@@ -11,7 +11,6 @@ var app;
                 var self = this;
                 var respPromise = this.$http.get('/Chat.FE.Web/api/Rooms');
                 respPromise.then(function (result) {
-                    console.log('Promise returns', result.data);
                     self.roomsCallback(result.data);
                 });
             };
@@ -22,4 +21,3 @@ var app;
         angular.module('app').service('roomsService', RoomService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=RoomsService.js.map

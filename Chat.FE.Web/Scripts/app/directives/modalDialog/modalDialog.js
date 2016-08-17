@@ -19,4 +19,3 @@ var app;
         directives.modalDialog = modalDialog;
     })(directives = app.directives || (app.directives = {}));
 })(app || (app = {}));
-//# sourceMappingURL=modalDialog.js.map
