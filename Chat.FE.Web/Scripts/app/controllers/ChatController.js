@@ -20,3 +20,4 @@ var app;
         angular.module('app').controller('ChatController', ChatController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=ChatController.js.map

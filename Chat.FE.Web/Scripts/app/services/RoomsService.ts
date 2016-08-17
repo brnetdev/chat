@@ -1,14 +1,13 @@
 ﻿/// <reference path="../models/room.ts" />
 module app.services {
+
     declare type roomServiceCallback = (rooms: app.models.Room[]) => void;
 
     export interface IRoomsService {
         roomsCallback: roomServiceCallback;
         getRooms(): void;
     }
-
     
-
     export class RoomService implements IRoomsService {
         //definiuje callback
         
