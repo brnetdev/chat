@@ -1,6 +1,9 @@
 ﻿/// <reference path="../models/room.ts" />
 /// <reference path="basecontroller.ts" />
+/// <reference path="../communication.ts" />
+/// <reference path="../../typings/signalr/signalr-1.0.d.ts" />
 module app.controllers {
+    
     export interface IRoomsController {
         getRooms(): void;
     }
@@ -11,10 +14,15 @@ module app.controllers {
     }
     
     export class RoomsController extends BaseController implements IRoomsController {
+        private _roomProxy: IRoomHubProxy;
+        private _signalR: SignalR;
+
 
         public static $inject = ['$scope', 'roomsService'];
         constructor(private $scope: IRoomsScope, private roomsService: app.services.IRoomsService) {                                
             super();
+
+            this._roomProxy = $.connection.roomProxy;
             this.registerEvents();
             this.$scope.rooms = app.models.Room[1];
             var rooms = this.getRooms();

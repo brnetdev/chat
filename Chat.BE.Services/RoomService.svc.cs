@@ -1,17 +1,12 @@
 ﻿using Chat.BE.Contracts;
+using Chat.BE.Contracts.DTO;
+using Chat.BE.Domain.Queries.Room;
+using Chat.BE.Infrastructure.CQRS;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using Chat.BE.Contracts.DTO;
-using Chat.BE.Infrastructure.CQRS;
-using Chat.BE.Domain.Queries.Room;
 
 namespace Chat.BE.Services
-{    
+{
     public class RoomService : IRoomService
     {
         private readonly IQueryDispatcher _queryDispatcher;

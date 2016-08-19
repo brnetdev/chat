@@ -1129,6 +1129,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\RoomsHub.cs" />
     <Compile Include="Hubs\TechHub.cs" />
     <Compile Include="Infrastructure\Common\ContextHelper.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentityDbContext.cs" />
@@ -1163,6 +1164,7 @@
     <Folder Include="Scripts\app\views\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\communication.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />

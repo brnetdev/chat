@@ -5,6 +5,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 /// <reference path="../models/room.ts" />
 /// <reference path="basecontroller.ts" />
+/// <reference path="../communication.ts" />
+/// <reference path="../../typings/signalr/signalr-1.0.d.ts" />
 var app;
 (function (app) {
     var controllers;
@@ -15,6 +17,7 @@ var app;
                 _super.call(this);
                 this.$scope = $scope;
                 this.roomsService = roomsService;
+                this._roomProxy = $.connection.roomProxy;
                 this.registerEvents();
                 this.$scope.rooms = app.models.Room[1];
                 var rooms = this.getRooms();

@@ -29,12 +29,7 @@ namespace Chat.FE.Web
             var castleControllerFactory = new Castle.Windsor.Mvc.WindsorControllerFactory(IocConfig.Container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(castleControllerFactory);
 
-            QueueManager.CreateQueues();
-
-            //using (AppIdentityDbContext db = new AppIdentityDbContext())
-            //{                
-            //    db.Database.Initialize(false);
-            //}
+            QueueManager.CreateQueues();           
 
             var roleManager = AppIdentityRoleManager.Create();
             if (!roleManager.RoleExistsAsync("users").Result)

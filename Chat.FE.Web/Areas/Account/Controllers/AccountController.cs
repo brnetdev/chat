@@ -34,7 +34,6 @@ namespace Chat.FE.Web.Areas.Account.Controllers
         public ActionResult AddUser()
         {
             AddUserNamePasswordVm vm = new AddUserNamePasswordVm();
-
             return View(vm);
         }
 
@@ -72,8 +71,7 @@ namespace Chat.FE.Web.Areas.Account.Controllers
         }
 
         protected override void Dispose(bool disposing)
-        {
-            //if (disposing) {}
+        {            
             
             base.Dispose(disposing);
 
