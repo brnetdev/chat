@@ -19,9 +19,17 @@ namespace Chat.BE.Domain.Handlers.Command
             
             using (Db db = new Db())
             {
-                var newRoom = new Data.Entities.Room { Description = command.Description, Title = command.Title };
+                var newRoom = new Data.Entities.Room
+                {
+                    Description = command.Description,
+                    Title = command.Title
+                };
                 db.Rooms.Add(newRoom);
-                return new AddRoomCommandStatus { Id = newRoom.Id };
+
+                return new AddRoomCommandStatus
+                {
+                    Id = newRoom.Id
+                };
             }            
         }
     }

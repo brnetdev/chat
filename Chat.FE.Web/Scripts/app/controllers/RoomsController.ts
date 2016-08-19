@@ -36,6 +36,7 @@ module app.controllers {
                 self.$scope.rooms = rooms;                
             }
             this.roomsService.getRooms();
+            this._roomProxy.server.disconnectRoom('aaaa');
         }
 
         public setRooms(rooms: app.models.Room[]) {

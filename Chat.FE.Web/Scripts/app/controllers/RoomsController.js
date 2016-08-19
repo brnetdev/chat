@@ -30,6 +30,7 @@ var app;
                     self.$scope.rooms = rooms;
                 };
                 this.roomsService.getRooms();
+                this._roomProxy.server.disconnectRoom('aaaa');
             };
             RoomsController.prototype.setRooms = function (rooms) {
                 this.$scope.rooms = rooms;
