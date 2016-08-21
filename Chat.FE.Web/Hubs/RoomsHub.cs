@@ -1,13 +1,16 @@
 ﻿using Chat.FE.Web.Infrastructure.Common;
 using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Chat.FE.Web.Hubs
 {
+    [HubName("roomsHub")]
     public class RoomsHub : Hub
     {
         private readonly IContextDataProvider _contextDataProvider;
@@ -27,7 +30,7 @@ namespace Chat.FE.Web.Hubs
         {            
             if (!string.IsNullOrEmpty(_contextDataProvider.Room))
             {
-                await DisconnectRoom(_contextDataProvider.Room);
+                //await disconnectRoom(_contextDataProvider.Room);
             }
             var conn = this.Context.ConnectionId;
 
@@ -41,10 +44,12 @@ namespace Chat.FE.Web.Hubs
         /// </summary>
         /// <param name="group"></param>
         /// <returns></returns>
+        [HubMethodName("disconnectRoom")]
         public async Task DisconnectRoom(string room)
         {
-            await this.Clients.OthersInGroup(room).disconnectedFromGroup(_contextDataProvider.Login);
-            await this.Groups.Remove(Context.ConnectionId, room);
+            //await this.Clients.All.sayHello();               
+            this.Clients.All/*OthersInGroup(room)*/.disconnectedFromGroup(_contextDataProvider.Login);
+            this.Groups.Remove(Context.ConnectionId, room);
 
         }
 

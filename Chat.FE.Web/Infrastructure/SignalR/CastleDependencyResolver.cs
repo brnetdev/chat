@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chat.FE.Web.Infrastructure.SignalR
 {
-    class CastleDependencyResolver : Microsoft.AspNet.SignalR.DefaultDependencyResolver
+    public class CastleDependencyResolver : Microsoft.AspNet.SignalR.DefaultDependencyResolver
     {
         private readonly IWindsorContainer _container;
 

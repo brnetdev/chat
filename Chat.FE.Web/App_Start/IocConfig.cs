@@ -1,6 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Chat.FE.Web.Infrastructure.Common;
+using Microsoft.AspNet.SignalR.Hubs;
 using System.Web.Mvc;
 
 namespace Chat.FE.Web.App_Start
@@ -18,6 +19,8 @@ namespace Chat.FE.Web.App_Start
 
         public static void RegisterComponents()
         {
+            _container.Register(Classes.FromThisAssembly().BasedOn(typeof(IHub)).LifestyleTransient());
+
             _container.Register(Classes.FromThisAssembly()
                                  .BasedOn<IController>()
                                  .LifestyleTransient());

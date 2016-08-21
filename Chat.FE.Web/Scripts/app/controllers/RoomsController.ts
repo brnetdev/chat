@@ -14,20 +14,18 @@ module app.controllers {
     }
     
     export class RoomsController extends BaseController implements IRoomsController {
-        private _roomProxy: IRoomHubProxy;
-        private _signalR: SignalR;
-
-
+        private _roomProxy: IRoomHubProxy;        
         public static $inject = ['$scope', 'roomsService'];
         constructor(private $scope: IRoomsScope, private roomsService: app.services.IRoomsService) {                                
             super();
-
-            this._roomProxy = $.connection.roomProxy;
+            this._roomProxy = $.connection.roomsHub;
+            var self = this;            
+            self._roomProxy.client.disconnectedFromGroup = (login: string) => this.disconnectedFromGroup(login);               
             this.registerEvents();
             this.$scope.rooms = app.models.Room[1];
-            var rooms = this.getRooms();
-            debugger;
+            var rooms = this.getRooms();            
             this.$scope.name = "Piotr";
+            self._roomProxy.server.disconnectRoom('pokoj');
         }
 
         public getRooms(): void {
@@ -35,8 +33,7 @@ module app.controllers {
             this.roomsService.roomsCallback = function (rooms: app.models.IRoom[]) {                                            
                 self.$scope.rooms = rooms;                
             }
-            this.roomsService.getRooms();
-            this._roomProxy.server.disconnectRoom('aaaa');
+            this.roomsService.getRooms();            
         }
 
         public setRooms(rooms: app.models.Room[]) {
@@ -48,6 +45,11 @@ module app.controllers {
                 this.getRooms();
             });
         }
+
+        private disconnectedFromGroup(login: string) {
+            alert(login);
+        }
+
     }
 
     angular.module('app').controller('RoomsController', RoomsController);

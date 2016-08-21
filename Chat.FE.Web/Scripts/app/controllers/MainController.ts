@@ -5,13 +5,18 @@ module app.controllers {
     }
 
     export interface IMainScope extends ng.IScope {
-        roomsLoaded: boolean;
+        loaded: boolean;
     }
 
     export class MainController implements IMainController {
         public static $inject = ["$scope"];
         constructor(private $scope: IMainScope) {
-            $scope.roomsLoaded = false;            
+            var self = this;
+            $.connection.hub.logging = true;
+            $.connection.hub.start().done(function () {
+                self.$scope.loaded = true;
+                self.$scope.$apply();
+            });            
         }
 
     }

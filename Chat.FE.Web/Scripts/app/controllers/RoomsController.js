@@ -14,15 +14,18 @@ var app;
         var RoomsController = (function (_super) {
             __extends(RoomsController, _super);
             function RoomsController($scope, roomsService) {
+                var _this = this;
                 _super.call(this);
                 this.$scope = $scope;
                 this.roomsService = roomsService;
-                this._roomProxy = $.connection.roomProxy;
+                this._roomProxy = $.connection.roomsHub;
+                var self = this;
+                self._roomProxy.client.disconnectedFromGroup = function (login) { return _this.disconnectedFromGroup(login); };
                 this.registerEvents();
                 this.$scope.rooms = app.models.Room[1];
                 var rooms = this.getRooms();
-                debugger;
                 this.$scope.name = "Piotr";
+                self._roomProxy.server.disconnectRoom('pokoj');
             }
             RoomsController.prototype.getRooms = function () {
                 var self = this;
@@ -30,7 +33,6 @@ var app;
                     self.$scope.rooms = rooms;
                 };
                 this.roomsService.getRooms();
-                this._roomProxy.server.disconnectRoom('aaaa');
             };
             RoomsController.prototype.setRooms = function (rooms) {
                 this.$scope.rooms = rooms;
@@ -40,6 +42,9 @@ var app;
                 this.$scope.$on(app.events.RoomsEvents.RoomAdded, function (event) {
                     _this.getRooms();
                 });
+            };
+            RoomsController.prototype.disconnectedFromGroup = function (login) {
+                alert(login);
             };
             RoomsController.$inject = ['$scope', 'roomsService'];
             return RoomsController;

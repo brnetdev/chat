@@ -29,9 +29,18 @@ namespace Chat.FE.Web.Infrastructure.Common
 
         public ContextDataProvider()
         {
-            _room = System.Web.HttpContext.Current.Session["room"].ToString();
+            if (System.Web.HttpContext.Current.Session != null)
+            {
+                _room = (System.Web.HttpContext.Current.Session["room"].ToString()) ?? "";
+            }
+
+            if (System.Web.HttpContext.Current.User != null)
+            {
+                _login = (System.Web.HttpContext.Current.User.Identity.Name) ?? "";
+            }
+            
             _hubContext = GlobalHost.ConnectionManager.GetHubContext<TechHub>();
-            _login = System.Web.HttpContext.Current.User.Identity.Name;
+            
         }
 
         public string Login
@@ -52,7 +61,7 @@ namespace Chat.FE.Web.Infrastructure.Common
             set { _hubContext = value; }
         }
 
-        
+
 
         public ContextData GetContextData()
         {
@@ -64,12 +73,12 @@ namespace Chat.FE.Web.Infrastructure.Common
             };
         }
     }
-    
+
     public class ContextData
     {
         public string Room { get; set; }
         public IHubContext HubContext { get; set; }
-        public string Login { get; set; }        
+        public string Login { get; set; }
     }
 
     #region code contract
@@ -81,9 +90,9 @@ namespace Chat.FE.Web.Infrastructure.Common
             get; set;
         }
 
-        public string Login {get;set;}
+        public string Login { get; set; }
         public string Room { get; set; }
-        
+
         public ContextData GetContextData()
         {
             Contract.Ensures(Contract.Result<ContextData>() != null);

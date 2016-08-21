@@ -15,7 +15,12 @@ namespace Chat.FE.Web.App_Start
                 "~/Scripts/Bootstrap.js"));
 
 
-            bundles.Add(new ScriptBundle("~/Scripts/appBundle").Include("~/Scripts/app/app.js"));            
+            bundles.Add(new ScriptBundle("~/Scripts/appBundle").Include("~/Scripts/app/app.js"));
+                        
+            bundles.Add(new ScriptBundle("~/Scripts/communication").Include(
+               "~/Scripts/app/communication.js"               
+               ));
+
             bundles.Add(new ScriptBundle("~/Scripts/models").Include(
                 "~/Scripts/app/models/Room.js",
                 "~/Scripts/app/models/User.js"

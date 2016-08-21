@@ -7,7 +7,7 @@ interface IRoomHubProxy {
 }
 
 interface SignalR {
-    roomProxy: IRoomHubProxy
+    roomsHub: IRoomHubProxy
 }
 
 interface IRoomServer {
@@ -22,6 +22,9 @@ interface IRoomClient {
     roomDeleted(): void;
     roomModified(): void;
 }
+
+
+
 
 
 

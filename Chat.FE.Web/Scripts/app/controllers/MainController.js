@@ -6,7 +6,12 @@ var app;
         var MainController = (function () {
             function MainController($scope) {
                 this.$scope = $scope;
-                $scope.roomsLoaded = false;
+                var self = this;
+                $.connection.hub.logging = true;
+                $.connection.hub.start().done(function () {
+                    self.$scope.loaded = true;
+                    self.$scope.$apply();
+                });
             }
             MainController.$inject = ["$scope"];
             return MainController;

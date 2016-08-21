@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" >
+        <div class="row" ng-if="loaded">
             <div class="col-lg-3" data-ng-controller="UsersController">
                 <div class="panel panel-default">
                     <div class="panel-heading">Users</div>
@@ -46,19 +46,21 @@
         <!-- Tu modale -->
     </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>    
     <script src="~/signalr/js"></script>
+    <script>
+
+        $(function () {
+           
+                
+        });
+    </script> 
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-route.min.js"></script>
-    <script src="~/Scripts/toastr.min.js"></script>
-    @Scripts.Render("~/Scripts/appBundle", "~/Scripts/models", "~/Scripts/services", "~/Scripts/events", "~/Scripts/controllers")    
-    <script>
-        $(function () {
-            $.hubConnection().logging = true;
-            $.hubConnection(@Url.Content("~")).start({ jsonp: true });
-        });
-    </script>
+    <script src="~/Scripts/angular-route.min.js"></script>    
+    <script src="~/Scripts/toastr.min.js"></script>%
+
+    @Scripts.Render("~/Scripts/appBundle", "~/Scripts/communication", "~/Scripts/models", "~/Scripts/services", "~/Scripts/events", "~/Scripts/controllers")    
+    
 </body>
 </html>
