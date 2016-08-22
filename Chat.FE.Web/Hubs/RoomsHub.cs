@@ -45,11 +45,11 @@ namespace Chat.FE.Web.Hubs
         /// <param name="group"></param>
         /// <returns></returns>
         [HubMethodName("disconnectRoom")]
-        public async Task DisconnectRoom(string room)
+        public void DisconnectRoom(string room)
         {
             //await this.Clients.All.sayHello();               
-            this.Clients.All/*OthersInGroup(room)*/.disconnectedFromGroup(_contextDataProvider.Login);
-            this.Groups.Remove(Context.ConnectionId, room);
+            this.Clients.All/*OthersInGroup(room)*/.disconnectedFromGroup("asasa"/*_contextDataProvider.Login*/);
+            //this.Groups.Remove(Context.ConnectionId, room);
 
         }
 

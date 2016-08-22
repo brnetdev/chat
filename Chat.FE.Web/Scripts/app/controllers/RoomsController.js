@@ -20,12 +20,13 @@ var app;
                 this.roomsService = roomsService;
                 this._roomProxy = $.connection.roomsHub;
                 var self = this;
-                self._roomProxy.client.disconnectedFromGroup = function (login) { return _this.disconnectedFromGroup(login); };
                 this.registerEvents();
                 this.$scope.rooms = app.models.Room[1];
                 var rooms = this.getRooms();
                 this.$scope.name = "Piotr";
-                self._roomProxy.server.disconnectRoom('pokoj');
+                self._roomProxy.client.disconnectedFromGroup = function (login) { return _this.disconnectedFromGroup(login); };
+                this.$scope.sendMessage = function () { return _this.sendMessage(); };
+                this.$scope.$on('$destroy', function () { console.log('Destroying RoomsContreller'); });
             }
             RoomsController.prototype.getRooms = function () {
                 var self = this;
@@ -33,6 +34,10 @@ var app;
                     self.$scope.rooms = rooms;
                 };
                 this.roomsService.getRooms();
+            };
+            RoomsController.prototype.sendMessage = function () {
+                debugger;
+                this._roomProxy.server.disconnectRoom('pokoj');
             };
             RoomsController.prototype.setRooms = function (rooms) {
                 this.$scope.rooms = rooms;

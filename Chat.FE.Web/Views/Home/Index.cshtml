@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" ng-if="loaded">
+        <div class="row">
             <div class="col-lg-3" data-ng-controller="UsersController">
                 <div class="panel panel-default">
                     <div class="panel-heading">Users</div>
@@ -33,10 +33,13 @@
                 </div>
             </div>
             <div class="col-lg-3" data-ng-controller="RoomsController" ng-cloak>
-                <div class="panel panel-default">                    
+                <div class="panel panel-default">
                     <div class="panel-heading">Rooms</div>
-                    <div class="panel-body">                        
+                    <div class="panel-body">
                         <div ng-repeat="room in rooms">{{room.Name}}</div>
+                    </div>
+                    <div>
+                        <button class="btn btn-default" ng-click="sendMessage()"></button>
                     </div>
                 </div>
             </div>
@@ -46,21 +49,18 @@
         <!-- Tu modale -->
     </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>    
-    <script src="~/signalr/js"></script>
-    <script>
-
-        $(function () {
-           
-                
-        });
-    </script> 
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/js"></script>    
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-route.min.js"></script>    
-    <script src="~/Scripts/toastr.min.js"></script>%
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    @Scripts.Render("~/Scripts/appBundle", "~/Scripts/communication", "~/Scripts/models", "~/Scripts/services", "~/Scripts/events", "~/Scripts/controllers")
+    <script>
+        $.connection.hub.logging = true;
+        $.connection.hub.start().done(function(){ loaded= true; });
+    </script>
 
-    @Scripts.Render("~/Scripts/appBundle", "~/Scripts/communication", "~/Scripts/models", "~/Scripts/services", "~/Scripts/events", "~/Scripts/controllers")    
-    
 </body>
+
 </html>

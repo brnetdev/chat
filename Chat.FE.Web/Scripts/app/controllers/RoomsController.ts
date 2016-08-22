@@ -11,6 +11,7 @@ module app.controllers {
     export interface IRoomsScope extends ng.IScope {
         rooms: app.models.Room[];
         name: string;
+        sendMessage(): void;
     }
     
     export class RoomsController extends BaseController implements IRoomsController {
@@ -20,12 +21,14 @@ module app.controllers {
             super();
             this._roomProxy = $.connection.roomsHub;
             var self = this;            
-            self._roomProxy.client.disconnectedFromGroup = (login: string) => this.disconnectedFromGroup(login);               
+            
             this.registerEvents();
             this.$scope.rooms = app.models.Room[1];
             var rooms = this.getRooms();            
             this.$scope.name = "Piotr";
-            self._roomProxy.server.disconnectRoom('pokoj');
+            self._roomProxy.client.disconnectedFromGroup = (login: string) => this.disconnectedFromGroup(login);
+            this.$scope.sendMessage = () => this.sendMessage();
+            this.$scope.$on('$destroy', function () { console.log('Destroying RoomsContreller') });
         }
 
         public getRooms(): void {
@@ -34,6 +37,11 @@ module app.controllers {
                 self.$scope.rooms = rooms;                
             }
             this.roomsService.getRooms();            
+        }
+
+        public sendMessage() {
+            debugger;
+            this._roomProxy.server.disconnectRoom('pokoj');
         }
 
         public setRooms(rooms: app.models.Room[]) {
@@ -46,7 +54,7 @@ module app.controllers {
             });
         }
 
-        private disconnectedFromGroup(login: string) {
+        public disconnectedFromGroup(login: string) {            
             alert(login);
         }
 

@@ -7,10 +7,8 @@ var app;
             function MainController($scope) {
                 this.$scope = $scope;
                 var self = this;
-                $.connection.hub.logging = true;
-                $.connection.hub.start().done(function () {
-                    self.$scope.loaded = true;
-                    self.$scope.$apply();
+                $scope.$on('$destroy', function () {
+                    console.log("Niszcze MainController");
                 });
             }
             MainController.$inject = ["$scope"];

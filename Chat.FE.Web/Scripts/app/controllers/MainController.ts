@@ -12,11 +12,11 @@ module app.controllers {
         public static $inject = ["$scope"];
         constructor(private $scope: IMainScope) {
             var self = this;
-            $.connection.hub.logging = true;
-            $.connection.hub.start().done(function () {
-                self.$scope.loaded = true;
-                self.$scope.$apply();
-            });            
+            
+            $scope.$on('$destroy', function () {
+                console.log("Niszcze MainController");
+            });
+
         }
 
     }
