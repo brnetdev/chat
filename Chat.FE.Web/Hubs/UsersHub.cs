@@ -12,7 +12,7 @@ namespace Chat.FE.Web.Hubs
 {
     [Authorize]
     [HubName("usersHub")]
-    public class UsersHub : Hub<IUsersHubClient>
+    public class UsersHub : Hub
     {
         private readonly IContextDataProvider _contextDataProvider;
 
@@ -29,7 +29,7 @@ namespace Chat.FE.Web.Hubs
         public override Task OnConnected()
         {
             return Task.Factory.StartNew(()=> {
-                //((List<string>)HttpContext.Current.Application["users"]).Add(_contextDataProvider.Login);
+                
 
                 }
             );
@@ -38,7 +38,7 @@ namespace Chat.FE.Web.Hubs
         public override Task OnDisconnected(bool stopCalled)
         {
             return Task.Factory.StartNew(() => {
-                //((List<string>)HttpContext.Current.Application["users"]).Remove(_contextDataProvider.Login);
+                
             }
             );
         }

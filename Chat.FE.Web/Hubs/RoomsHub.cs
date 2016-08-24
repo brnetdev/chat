@@ -1,11 +1,6 @@
 ﻿using Chat.FE.Web.Infrastructure.Common;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Chat.FE.Web.Hubs
@@ -53,7 +48,7 @@ namespace Chat.FE.Web.Hubs
         [HubMethodName("disconnectRoom")]
         public async Task DisconnectRoom(string room)
         {            
-            await this.Clients.Others/*OthersInGroup(room)*/.disconnectedFromGroup(_contextDataProvider.Login);
+            await this.Clients.Others/*OthersInGroup(room)*/.disconnectedFromGroup("aaa");
         }
 
     }

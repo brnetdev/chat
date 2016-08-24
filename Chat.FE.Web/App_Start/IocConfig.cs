@@ -24,7 +24,7 @@ namespace Chat.FE.Web.App_Start
             _container.Register(Classes.FromThisAssembly()
                                  .BasedOn<IController>()
                                  .LifestyleTransient());
-            _container.Register(Component.For<IContextDataProvider>().ImplementedBy<ContextDataProvider>().LifestylePerWebRequest());            
+            _container.Register(Component.For<IContextDataProvider>().ImplementedBy<ContextDataProvider>().LifestyleTransient());
         }
 
         public static void ReleaseContainer()

@@ -29,14 +29,14 @@ namespace Chat.FE.Web.Infrastructure.Common
 
         public ContextDataProvider()
         {
-            if (System.Web.HttpContext.Current.Session != null)
+            if (System.Web.HttpContext.Current?.Session != null)
             {
-                _room = (System.Web.HttpContext.Current.Session["room"].ToString()) ?? "";
+                _room = (System.Web.HttpContext.Current?.Session["room"].ToString()) ?? "";
             }
 
-            if (System.Web.HttpContext.Current.User != null)
+            if (System.Web.HttpContext.Current?.User != null)
             {
-                _login = (System.Web.HttpContext.Current.User.Identity.Name) ?? "";
+                _login = (System.Web.HttpContext.Current?.User.Identity.Name) ?? "";
             }
             
             _hubContext = GlobalHost.ConnectionManager.GetHubContext<TechHub>();
