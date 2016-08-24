@@ -1125,13 +1125,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\Users.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Hubs\RoomsHub.cs" />
     <Compile Include="Hubs\TechHub.cs" />
+    <Compile Include="Hubs\UsersHub.cs" />
     <Compile Include="Infrastructure\Common\ContextHelper.cs" />
+    <Compile Include="Infrastructure\Hubs\LoggerHubPipelineAspect.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentityDbContext.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentityRoleManager.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentitySignInManager.cs" />
@@ -1201,6 +1204,10 @@
     <ProjectReference Include="..\Chat.BE.Contracts\Chat.BE.Contracts.csproj">
       <Project>{f71568da-ff24-40b1-a20c-ad9cbb842f33}</Project>
       <Name>Chat.BE.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chat.BE.Data\Chat.BE.Data.csproj">
+      <Project>{AF539A50-C043-4963-86AE-F8CE6029CBB7}</Project>
+      <Name>Chat.BE.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chat.Common\Chat.Common.csproj">
       <Project>{4d1df52d-7751-419d-a528-47567efc1f81}</Project>

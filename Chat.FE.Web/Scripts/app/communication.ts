@@ -6,10 +6,6 @@ interface IRoomHubProxy {
     server: IRoomServer;
 }
 
-interface SignalR {
-    roomsHub: IRoomHubProxy
-}
-
 interface IRoomServer {
     joinRoom(room: string): void;
     disconnectRoom(room: string): void;
@@ -24,7 +20,23 @@ interface IRoomClient {
 }
 
 
+interface IUsersHubProxy {
+    client: IUsersClient;
+    server: IUsersServer;
+}
 
+interface IUsersClient {
+    newUsersLoggedIn(userName: string): void;
+}
+
+interface IUsersServer {
+    newUsersLoggedIn(userName: string): void;
+}
+
+interface SignalR {
+    roomsHub: IRoomHubProxy;
+    usersHub: IUsersHubProxy;
+}
 
 
 

@@ -14,14 +14,14 @@ namespace Chat.BE.Data
 
         public DbSet<Room> Rooms { get; set; }
 
-        public Db() : base("cs")
+        public Db() : base(nameOrConnectionString: "cs")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<Db, Chat.BE.Data.Migrations.Configuration>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("Chat");
+            modelBuilder.HasDefaultSchema(schema: "Chat");
             modelBuilder.Configurations.Add(new RoomEntityConfiguration());
         }
 

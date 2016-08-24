@@ -3,6 +3,7 @@ using Chat.FE.Web.App_Start;
 using Chat.FE.Web.Infrastructure.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -28,7 +29,6 @@ namespace Chat.FE.Web
             GlobalFilters.Filters.Add(new System.Web.Mvc.AuthorizeAttribute());                        
             var castleControllerFactory = new Castle.Windsor.Mvc.WindsorControllerFactory(IocConfig.Container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(castleControllerFactory);
-
             QueueManager.CreateQueues();           
 
             var roleManager = AppIdentityRoleManager.Create();
@@ -51,7 +51,12 @@ namespace Chat.FE.Web
                 };
                 userManager.CreateAsync(user).Wait();
                 userManager.AddToRoleAsync(user.Id, "admin");
+
+                Application["users"] = new List<string>();
+
             }
+
+            
 
         }
 

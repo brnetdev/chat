@@ -14,8 +14,7 @@ namespace Chat.FE.Web.Hubs
     public class RoomsHub : Hub
     {
         private readonly IContextDataProvider _contextDataProvider;
-
-
+        
         public RoomsHub(IContextDataProvider contextDataProvider)
         {
             _contextDataProvider = contextDataProvider;
@@ -27,16 +26,23 @@ namespace Chat.FE.Web.Hubs
         /// <param name="group"></param>
         /// <returns></returns>
         public async Task JoinRoom(string room)
-        {            
-            if (!string.IsNullOrEmpty(_contextDataProvider.Room))
+        {
+            try
             {
-                //await disconnectRoom(_contextDataProvider.Room);
-            }
-            var conn = this.Context.ConnectionId;
+                if (!string.IsNullOrEmpty(_contextDataProvider.Room))
+                {
+                   await this.DisconnectRoom(_contextDataProvider.Room);
+                }
+                var conn = this.Context.ConnectionId;
 
-            await this.Groups.Add(conn, room);
-            _contextDataProvider.Room = room;
-            await this.Clients.OthersInGroup(room).joinedToGroup(_contextDataProvider.Login);
+                await this.Groups.Add(conn, room);
+                _contextDataProvider.Room = room;
+                await this.Clients.OthersInGroup(room).joinedToGroup(_contextDataProvider.Login);
+            }
+            catch
+            {
+                throw new HubException("Nie udało się połączyć do pokoju");
+            }
         }
 
         /// <summary>
@@ -45,12 +51,9 @@ namespace Chat.FE.Web.Hubs
         /// <param name="group"></param>
         /// <returns></returns>
         [HubMethodName("disconnectRoom")]
-        public void DisconnectRoom(string room)
-        {
-            //await this.Clients.All.sayHello();               
-            this.Clients.All/*OthersInGroup(room)*/.disconnectedFromGroup("asasa"/*_contextDataProvider.Login*/);
-            //this.Groups.Remove(Context.ConnectionId, room);
-
+        public async Task DisconnectRoom(string room)
+        {            
+            await this.Clients.Others/*OthersInGroup(room)*/.disconnectedFromGroup(_contextDataProvider.Login);
         }
 
     }

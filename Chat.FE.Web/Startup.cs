@@ -11,6 +11,7 @@ using Microsoft.AspNet.SignalR.Redis;
 
 using Chat.FE.Web.Infrastructure.SignalR;
 using Chat.FE.Web.App_Start;
+using Chat.FE.Web.Infrastructure.Hubs;
 
 [assembly: OwinStartup(typeof(Chat.FE.Web.Startup))]
 
@@ -37,13 +38,14 @@ namespace Chat.FE.Web
             //SignalR & Redis
 
             GlobalHost.DependencyResolver.UseRedis(server: "localhost", port: 6379, password: "", eventKey: "Chat");
+            GlobalHost.HubPipeline.AddModule(new LoggerHubPipelineAspect());
             
             app.MapSignalR(new HubConfiguration()
             {                
                 EnableDetailedErrors = true,
                 EnableJavaScriptProxies = true,
                 Resolver = new CastleDependencyResolver(IocConfig.Container),
-                //EnableJSONP = true                
+                EnableJSONP = true                
             });
 
 
