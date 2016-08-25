@@ -11,6 +11,7 @@
     <link href="~/Content/Style.css" rel="stylesheet" />
 </head>
 <body data-ng-app="app" data-ng-cloak data-ng-controller="MainController">
+    <div id="toast-container"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -29,9 +30,16 @@
             <div class="col-lg-6" data-ng-controller="ChatController">
                 <div class="panel panel-default">
                     <div class="panel-heading">Chat</div>
-                    <div class="panel-body"></div>
+                    <div class="panel-body">
+                        <textarea class="form-control chatWindow" id="chatWindow" ng-model="messages" readonly></textarea>
+                    </div>                    
+                    <div>
+                        <input type="text" class="form-control" id="messageInput" placeholder="Wpisz wiadomość do wysłania" autofocus />
+                        <button class="btn btn-primary pull-right" ng-click="broadcastMessage()" ><span class="glyphicon glyphicon-share " />Wyślij</button>
+                    </div>
                 </div>
             </div>
+
             <div class="col-lg-3" data-ng-controller="RoomsController" ng-cloak>
                 <div class="panel panel-default">
                     <div class="panel-heading">Rooms</div>

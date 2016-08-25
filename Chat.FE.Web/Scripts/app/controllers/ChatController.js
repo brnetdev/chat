@@ -12,6 +12,8 @@ var app;
             function ChatController() {
                 _super.apply(this, arguments);
             }
+            ChatController.prototype.sendMessage = function (message) {
+            };
             ChatController.prototype.registerEvents = function () {
             };
             return ChatController;
