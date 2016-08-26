@@ -11,4 +11,3 @@ var app;
         events.RoomsEvents = RoomsEvents;
     })(events = app.events || (app.events = {}));
 })(app || (app = {}));
-//# sourceMappingURL=Events.js.map

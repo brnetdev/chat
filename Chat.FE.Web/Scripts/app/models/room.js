@@ -10,4 +10,3 @@ var app;
         models.Room = Room;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
-//# sourceMappingURL=room.js.map

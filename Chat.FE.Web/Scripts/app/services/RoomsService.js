@@ -21,4 +21,3 @@ var app;
         angular.module('app').service('roomsService', RoomService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=RoomsService.js.map

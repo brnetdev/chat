@@ -33,9 +33,23 @@ interface IUsersServer {
     newUsersLoggedIn(userName: string): void;
 }
 
+interface IChatHubProxy {
+    client: IChatClient;
+    server: IChatServer;
+}
+
+interface IChatClient {
+    newMessageRecived(message: string, login: string): void;
+}
+
+interface IChatServer {
+    broadcastMessage(message: string, room: string): void;
+}
+
 interface SignalR {
     roomsHub: IRoomHubProxy;
     usersHub: IUsersHubProxy;
+    chatHub: IChatHubProxy;
 }
 
 

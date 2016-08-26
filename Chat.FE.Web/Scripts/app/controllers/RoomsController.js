@@ -58,4 +58,3 @@ var app;
         angular.module('app').controller('RoomsController', RoomsController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-//# sourceMappingURL=RoomsController.js.map

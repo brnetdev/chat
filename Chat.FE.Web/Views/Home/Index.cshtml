@@ -31,15 +31,15 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Chat</div>
                     <div class="panel-body">
-                        <textarea class="form-control chatWindow" id="chatWindow" ng-model="messages" readonly></textarea>
+                        <textarea class="form-control chatWindow" id="chatWindow" ng-model="messages"></textarea>
+                        <div ng-bind-html="">ddd</div>
                     </div>                    
                     <div>
-                        <input type="text" class="form-control" id="messageInput" placeholder="Wpisz wiadomość do wysłania" autofocus />
-                        <button class="btn btn-primary pull-right" ng-click="broadcastMessage()" ><span class="glyphicon glyphicon-share " />Wyślij</button>
+                        <input type="text" class="form-control" id="messageInput" placeholder="Wpisz wiadomość do wysłania" autofocus ng-model="message" />
+                        <button class="btn btn-primary pull-right" ng-click="broadcastMessage(message)" ><span class="glyphicon glyphicon-share " />Wyślij</button>
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-3" data-ng-controller="RoomsController" ng-cloak>
                 <div class="panel panel-default">
                     <div class="panel-heading">Rooms</div>

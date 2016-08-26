@@ -21,7 +21,16 @@ namespace Chat.FE.Web.Hubs
 
         public void BroadcastMessage(string message, string room)
         {
-            this.Clients.Group(groupName: room).NewMessageRecived(message: message, sender: _contextDataProvider.Login);
+            if (string.IsNullOrEmpty(room))
+            {                
+                this.Clients.Others.NewMessageRecived(message: message, sender: _contextDataProvider.Login);
+                this.Clients.Caller.NewMessageRecived(message: message, sender: "Ty:");
+            }
+            else
+            {
+                this.Clients.OthersInGroup(groupName: room).NewMessageRecived(message: message, sender: _contextDataProvider.Login);
+                this.Clients.Caller.NewMessageRecived(message: message, sender: "Ty:");
+            }
         }
     }
     
@@ -36,16 +45,17 @@ namespace Chat.FE.Web.Hubs
         /// </summary>
         /// <param name="message">Wiadomość</param>
         /// <param name="sender">Login wysyłającego</param>
-        void NewMessageRecived(string message, string sender);
+        Task NewMessageRecived(string message, string sender);
 
     }
 
     [ContractClassFor(typeof(IChatHubClient))]
     public class ChatHubClientContractClass : IChatHubClient
     {
-        public void NewMessageRecived(string message, string sender)
+        public Task NewMessageRecived(string message, string sender)
         {
             Contract.Requires(!string.IsNullOrEmpty(sender));
+            return default(Task);
         }
     }
 

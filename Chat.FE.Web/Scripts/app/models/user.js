@@ -10,4 +10,3 @@ var app;
         models.User = User;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
-//# sourceMappingURL=user.js.map
