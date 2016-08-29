@@ -17,6 +17,11 @@ module app.controllers {
                 console.log("Niszcze MainController");
             });
 
+            this.$scope.$on(app.events.RoomsEvents.RoomStatusUpdated, (event, room) => {
+                //aktualizacja stanu                                
+                //this.$scope.room = <string>room;
+            });
+
         }
 
     }

@@ -29,3 +29,4 @@ var app;
         angular.module('app').controller('UsersController', UsersController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=UsersController.js.map

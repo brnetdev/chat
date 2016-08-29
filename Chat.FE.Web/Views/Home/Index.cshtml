@@ -14,10 +14,30 @@
     <div id="toast-container"></div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            @*<div class="col-lg-12">
                 <div class="jumbotron">
                     <h1>Chat</h1>
                 </div>
+            </div>*@
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <div class="navbar-brand">Chat - powered by SignalR &amp; AngularJS</div>
+                        </div>
+
+                        <ul class="nav navbar-nav">
+                            @*<li><a href="#">Infomracje</a></li>*@                            
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">                            
+                            <li><a href="@Url.Action("Logout", "SignIn", new { area="Account" })" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
+                        </ul>                        
+
+                    </div>
+                </nav>
             </div>
         </div>
         <div class="row">
@@ -31,12 +51,17 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Chat</div>
                     <div class="panel-body">
-                        <textarea class="form-control chatWindow" id="chatWindow" ng-model="messages"></textarea>
-                        <div ng-bind-html="">ddd</div>
-                    </div>                    
+                        <textarea class="form-control chatWindow" id="chatWindow" readonly disabled>{{renderedMessages}}</textarea>                        
+                    </div>
                     <div>
-                        <input type="text" class="form-control" id="messageInput" placeholder="Wpisz wiadomość do wysłania" autofocus ng-model="message" />
-                        <button class="btn btn-primary pull-right" ng-click="broadcastMessage(message)" ><span class="glyphicon glyphicon-share " />Wyślij</button>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="messageInput" placeholder="Wpisz wiadomość do wysłania" autofocus tabindex="1" ng-model="message" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary pull-right" ng-click="broadcastMessage(message)" tabindex="2"><span class="glyphicon glyphicon-share " />Wyślij</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -44,7 +69,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Rooms</div>
                     <div class="panel-body">
-                        <div ng-repeat="room in rooms">{{room.Name}}</div>
+                        <div ng-repeat="room in rooms"><span ng-click="joinRoom(room)" >{{room.Name}}</span></div>
                     </div>
                     <div>
                         <button class="btn btn-default" ng-click="sendMessage()"></button>
@@ -58,7 +83,7 @@
     </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-    <script src="~/signalr/js"></script>    
+    <script src="~/signalr/js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
@@ -66,7 +91,7 @@
     @Scripts.Render("~/Scripts/appBundle", "~/Scripts/communication", "~/Scripts/models", "~/Scripts/services", "~/Scripts/events", "~/Scripts/controllers")
     <script>
         $.connection.hub.logging = true;
-        $.connection.hub.start().done(function(){ loaded= true; });
+        $.connection.hub.start().done(function () { loaded = true; });
     </script>
 
 </body>

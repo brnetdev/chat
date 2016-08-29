@@ -13,18 +13,26 @@ var app;
                 var _this = this;
                 _super.call(this);
                 this.$scope = $scope;
+                self = this;
                 self._chatProxy = $.connection.chatHub;
-                self._chatProxy.client.newMessageRecived = function (message, login) { return _this.newMessageRecived(message, login); };
+                self._chatProxy.client.NewMessageRecived = function (message, login) { return _this.newMessageRecived(message, login); };
                 var self = this;
                 this.$scope.messages = [];
+                this.$scope.renderedMessages = "";
                 this.$scope.broadcastMessage = function (message) { return _this.sendMessage(message); };
+                this.$scope.$on(app.events.RoomsEvents.RoomChanged, function (event, room, login) {
+                    //info dla innych userów, ze dolaczyl nowy - broadcast
+                });
             }
             ChatController.prototype.sendMessage = function (message) {
                 this._chatProxy.server.broadcastMessage(message, this.$scope.room);
                 this.$scope.message = "";
             };
             ChatController.prototype.newMessageRecived = function (message, login) {
-                this.$scope.messages.push(login + ": " + message);
+                var msg = login + " " + message + "\n";
+                this.$scope.messages.push(msg);
+                this.$scope.renderedMessages += msg;
+                this.$scope.$apply();
             };
             ChatController.prototype.registerEvents = function () {
             };
@@ -35,3 +43,4 @@ var app;
         angular.module('app').controller('ChatController', ChatController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=ChatController.js.map

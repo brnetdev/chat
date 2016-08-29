@@ -2,6 +2,7 @@
 using Chat.BE.Contracts.Proxies;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -15,6 +16,7 @@ namespace Chat.FE.Web.Controllers
         
         public IEnumerable<RoomDTO> Get()
         {
+            Contract.Ensures(Contract.ForAll<RoomDTO>(Contract.Result<IEnumerable<RoomDTO>>(), elem => !string.IsNullOrEmpty(elem.Name)));
             RoomServiceProxy proxy = new RoomServiceProxy();
             
                 var rooms = proxy.GetAll();
@@ -28,6 +30,7 @@ namespace Chat.FE.Web.Controllers
                 
         public void Post([FromBody]string value)
         {
+
         }
                 
         public void Put(int id, [FromBody]string value)

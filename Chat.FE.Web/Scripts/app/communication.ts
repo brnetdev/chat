@@ -12,8 +12,8 @@ interface IRoomServer {
 }
 
 interface IRoomClient {
-    joinedToGroup(login: string): void;
-    disconnectedFromGroup(login: string): void;
+    joinedToRoom(login: string, room: string): void;
+    disconnectedFromGroup(login: string, room: string): void;
     roomAdded(): void;
     roomDeleted(): void;
     roomModified(): void;
@@ -39,7 +39,7 @@ interface IChatHubProxy {
 }
 
 interface IChatClient {
-    newMessageRecived(message: string, login: string): void;
+    NewMessageRecived(message: string, login: string): void;
 }
 
 interface IChatServer {

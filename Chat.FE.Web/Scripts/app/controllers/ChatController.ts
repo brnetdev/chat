@@ -6,7 +6,8 @@
 
     export interface IChatScope extends ng.IScope {
         room: string;
-        messages: string[];        
+        messages: string[];    
+        renderedMessages: string;    
         message: string;
         broadcastMessage(message: string): void;
     }
@@ -17,12 +18,21 @@
         public static $inject = ['$scope'];
         constructor(private $scope: IChatScope) {
             super();
+            self = this;
             self._chatProxy = $.connection.chatHub;
-            self._chatProxy.client.newMessageRecived = (message: string, login: string) => this.newMessageRecived(message, login);            
+            self._chatProxy.client.NewMessageRecived = (message: string, login: string) => this.newMessageRecived(message, login);            
             var self = this;
+
             this.$scope.messages = [];
+            this.$scope.renderedMessages = "";
             this.$scope.broadcastMessage = (message: string) => this.sendMessage(message);
 
+            this.$scope.$on(app.events.RoomsEvents.RoomChanged, (event, room, login) => {
+                //info dla innych userów, ze dolaczyl nowy - broadcast
+
+            });
+
+            
             
         }
         public sendMessage(message: string): void {                        
@@ -31,7 +41,10 @@
         }
 
         public newMessageRecived(message: string, login: string): void {            
-            this.$scope.messages.push(login + ": " + message);            
+            var msg = login + " " + message + "\n";
+            this.$scope.messages.push(msg);
+            this.$scope.renderedMessages += msg;                        
+            this.$scope.$apply();
         }
 
         registerEvents(): void {

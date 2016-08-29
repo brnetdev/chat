@@ -1,11 +1,11 @@
 ﻿module app.models {
     export interface IRoom {
-        name: string;
-        description: string;
+        Name: string;
+        Description: string;
     }
 
     export class Room implements IRoom {
-        name: string;
-        description: string;
+        Name: string;
+        Description: string;
     }
 }

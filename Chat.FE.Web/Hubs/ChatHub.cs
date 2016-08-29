@@ -10,15 +10,16 @@ using System.Threading.Tasks;
 namespace Chat.FE.Web.Hubs
 {
 
+    [Authorize]
     public class ChatHub : Hub<IChatHubClient>
     {
-        private IContextDataProvider _contextDataProvider;
-
+        private readonly IContextDataProvider _contextDataProvider;        
+                
         public ChatHub(IContextDataProvider contextDataProvider)
         {
-            _contextDataProvider = contextDataProvider;
+            _contextDataProvider = contextDataProvider;            
         }
-
+                
         public void BroadcastMessage(string message, string room)
         {
             if (string.IsNullOrEmpty(room))
@@ -32,6 +33,13 @@ namespace Chat.FE.Web.Hubs
                 this.Clients.Caller.NewMessageRecived(message: message, sender: "Ty:");
             }
         }
+
+        [ContractInvariantMethod]
+        private void Invariants()
+        {
+            Contract.Invariant(_contextDataProvider != null);        
+        }
+
     }
     
     /// <summary>
@@ -46,7 +54,7 @@ namespace Chat.FE.Web.Hubs
         /// <param name="message">Wiadomość</param>
         /// <param name="sender">Login wysyłającego</param>
         Task NewMessageRecived(string message, string sender);
-
+        Task NewUserAuthorized(string login);
     }
 
     [ContractClassFor(typeof(IChatHubClient))]
@@ -55,6 +63,12 @@ namespace Chat.FE.Web.Hubs
         public Task NewMessageRecived(string message, string sender)
         {
             Contract.Requires(!string.IsNullOrEmpty(sender));
+            return default(Task);
+        }
+
+        public Task NewUserAuthorized(string login)
+        {
+            Contract.Requires(!string.IsNullOrEmpty(login));
             return default(Task);
         }
     }

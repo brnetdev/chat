@@ -6,12 +6,17 @@ module app.controllers {
     
     export interface IRoomsController {
         getRooms(): void;
+        joinRoom(room: app.models.IRoom): void;
+        joinedToRoom(room: string, login: string): void;
+        updateCallerRoomStatus(room: string): void;
     }
 
     export interface IRoomsScope extends ng.IScope {
         rooms: app.models.Room[];
         name: string;
         sendMessage(): void;
+        joinRoom(room: app.models.IRoom): void;
+
     }
     
     export class RoomsController extends BaseController implements IRoomsController {
@@ -27,16 +32,27 @@ module app.controllers {
             var rooms = this.getRooms();            
             this.$scope.name = "Piotr";
             self._roomProxy.client.disconnectedFromGroup = (login: string) => this.disconnectedFromGroup(login);
+            self._roomProxy.client.joinedToRoom = (room, login) => this.joinedToRoom(room, login);
+
+            //inicjalizacja scope
             this.$scope.sendMessage = () => this.sendMessage();
+            this.$scope.joinRoom = (room) => this.joinRoom(room);
+
+
             this.$scope.$on('$destroy', function () { console.log('Destroying RoomsContreller') });
         }
 
         public getRooms(): void {
             var self = this;
-            this.roomsService.roomsCallback = function (rooms: app.models.IRoom[]) {                                            
+            this.roomsService.roomsCallback = function (rooms: app.models.Room[]) {                                            
                 self.$scope.rooms = rooms;                
             }
             this.roomsService.getRooms();            
+        }
+
+        public joinRoom(room: app.models.Room): void {
+            debugger;
+            this._roomProxy.server.joinRoom(room.Name);            
         }
 
         public sendMessage() {
@@ -56,6 +72,14 @@ module app.controllers {
 
         public disconnectedFromGroup(login: string) {            
             alert(login);
+        }
+
+        public joinedToRoom(room: string, login: string): void {
+            this.$scope.$emit(app.events.RoomsEvents.RoomChanged, login, room);
+        }
+
+        public updateCallerRoomStatus(room: string): void {
+            this.$scope.$emit(app.events.RoomsEvents.RoomStatusUpdated, room);
         }
 
     }

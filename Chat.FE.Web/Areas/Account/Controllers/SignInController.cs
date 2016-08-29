@@ -59,7 +59,8 @@ namespace Chat.FE.Web.Areas.Account.Controllers
 
         public ActionResult Logout()
         {
-            return RedirectToAction("Login", "SignIn", new { area = "Admin" });
+            _signInManager.AuthenticationManager.SignOut();
+            return RedirectToAction("Login", "SignIn", new { area = "Account" });
         }
 
         protected override void Dispose(bool disposing)

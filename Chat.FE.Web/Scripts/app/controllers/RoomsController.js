@@ -25,7 +25,10 @@ var app;
                 var rooms = this.getRooms();
                 this.$scope.name = "Piotr";
                 self._roomProxy.client.disconnectedFromGroup = function (login) { return _this.disconnectedFromGroup(login); };
+                self._roomProxy.client.joinedToRoom = function (room, login) { return _this.joinedToRoom(room, login); };
+                //inicjalizacja scope
                 this.$scope.sendMessage = function () { return _this.sendMessage(); };
+                this.$scope.joinRoom = function (room) { return _this.joinRoom(room); };
                 this.$scope.$on('$destroy', function () { console.log('Destroying RoomsContreller'); });
             }
             RoomsController.prototype.getRooms = function () {
@@ -34,6 +37,10 @@ var app;
                     self.$scope.rooms = rooms;
                 };
                 this.roomsService.getRooms();
+            };
+            RoomsController.prototype.joinRoom = function (room) {
+                debugger;
+                this._roomProxy.server.joinRoom(room.Name);
             };
             RoomsController.prototype.sendMessage = function () {
                 debugger;
@@ -51,6 +58,12 @@ var app;
             RoomsController.prototype.disconnectedFromGroup = function (login) {
                 alert(login);
             };
+            RoomsController.prototype.joinedToRoom = function (room, login) {
+                this.$scope.$emit(app.events.RoomsEvents.RoomChanged, login, room);
+            };
+            RoomsController.prototype.updateCallerRoomStatus = function (room) {
+                this.$scope.$emit(app.events.RoomsEvents.RoomStatusUpdated, room);
+            };
             RoomsController.$inject = ['$scope', 'roomsService'];
             return RoomsController;
         }(controllers.BaseController));
@@ -58,3 +71,4 @@ var app;
         angular.module('app').controller('RoomsController', RoomsController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=RoomsController.js.map

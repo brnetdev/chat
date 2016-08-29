@@ -1,7 +1,9 @@
 ﻿using Chat.Common;
 using Chat.FE.Web.App_Start;
+using Chat.FE.Web.Hubs;
 using Chat.FE.Web.Infrastructure.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -14,6 +16,7 @@ namespace Chat.FE.Web
 {
     public class Global : HttpApplication
     {
+        IHubContext _context = GlobalHost.ConnectionManager.GetHubContext<ChatHub>();
         protected void Session_Start(object sender, EventArgs e)
         {            
         }
@@ -63,6 +66,11 @@ namespace Chat.FE.Web
         protected void Application_End()
         {
             IocConfig.ReleaseContainer();
+        }
+
+        protected void Application_PostAuthorizeRequest()
+        {
+            //_context.Clients.All
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Chat.BE.Data;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -14,6 +15,7 @@ namespace Chat.FE.Web.Controllers
         
         public IEnumerable<string> Get()
         {
+            Contract.Ensures(Contract.ForAll<string>(Contract.Result<IEnumerable<string>>(), elem => !string.IsNullOrEmpty(elem) ));
             return new List<string>();       
         }
 
