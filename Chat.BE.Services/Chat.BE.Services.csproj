@@ -100,11 +100,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="RoomService.svc" />
+    <Content Include="PeopleOnlineService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PeopleOnlineService.svc.cs">
+      <DependentUpon>PeopleOnlineService.svc</DependentUpon>
+    </Compile>
     <Content Include="App_Code\AppInitialize.cs" />
     <Compile Include="Config\WcfInstaller.cs" />
     <Compile Include="RoomService.svc.cs">

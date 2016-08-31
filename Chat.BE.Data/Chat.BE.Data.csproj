@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201608102243038_Initialization_Domain.Designer.cs">
       <DependentUpon>201608102243038_Initialization_Domain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608312118163_3108.cs" />
+    <Compile Include="Migrations\201608312118163_3108.Designer.cs">
+      <DependentUpon>201608312118163_3108.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,6 +76,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608102243038_Initialization_Domain.resx">
       <DependentUpon>201608102243038_Initialization_Domain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608312118163_3108.resx">
+      <DependentUpon>201608312118163_3108.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -22,6 +22,7 @@ namespace Chat.FE.Web.Hubs
                 
         public void BroadcastMessage(string message, string room)
         {
+            
             if (string.IsNullOrEmpty(room))
             {                
                 this.Clients.Others.NewMessageRecived(message: message, sender: _contextDataProvider.Login);

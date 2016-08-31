@@ -1,4 +1,5 @@
-﻿using Chat.BE.Data;
+﻿using Chat.BE.Contracts.DTO;
+using Chat.BE.Data;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -16,7 +17,8 @@ namespace Chat.FE.Web.Controllers
         public IEnumerable<string> Get()
         {
             Contract.Ensures(Contract.ForAll<string>(Contract.Result<IEnumerable<string>>(), elem => !string.IsNullOrEmpty(elem) ));
-            return new List<string>();       
+            
+            return new List<string>() {  };       
         }
 
         
@@ -25,8 +27,9 @@ namespace Chat.FE.Web.Controllers
             return "value";
         }
                 
-        public void Post([FromBody]string value)
+        public void Post(PersonOnlineDTO person)
         {
+
         }
 
         
