@@ -1177,6 +1177,7 @@
     <Compile Include="Hubs\TechHub.cs" />
     <Compile Include="Hubs\UsersHub.cs" />
     <Compile Include="Infrastructure\Common\ContextHelper.cs" />
+    <Compile Include="Infrastructure\Common\UsersInRoom.cs" />
     <Compile Include="Infrastructure\Hubs\LoggerHubPipelineAspect.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentityDbContext.cs" />
     <Compile Include="Infrastructure\Identity\AppIdentityRoleManager.cs" />

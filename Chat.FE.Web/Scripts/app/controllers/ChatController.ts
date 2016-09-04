@@ -2,6 +2,7 @@
     export interface IChatController {
         sendMessage(message: string): void;
         newMessageRecived(message: string, login: string);
+        showDialog(user: string);
     }
 
     export interface IChatScope extends ng.IScope {
@@ -45,6 +46,10 @@
             this.$scope.messages.push(msg);
             this.$scope.renderedMessages += msg;                        
             this.$scope.$apply();
+        }
+
+        public showDialog(user: string): void {
+            
         }
 
         registerEvents(): void {

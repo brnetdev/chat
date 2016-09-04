@@ -35,6 +35,8 @@ namespace Chat.FE.Web
                 LoginPath = new PathString("/Account/SignIn/Login")
             });
 
+            //WebApiConfig.Register()
+
             //SignalR & Redis
 
             GlobalHost.DependencyResolver.UseRedis(server: "localhost", port: 6379, password: "", eventKey: "Chat");

@@ -44,7 +44,9 @@
             <div class="col-lg-3" data-ng-controller="UsersController">
                 <div class="panel panel-default">
                     <div class="panel-heading">Users</div>
-                    <div class="panel-body"></div>
+                    <div class="panel-body">
+                        <div ng-repeat="user in users">{{user}}</div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6" data-ng-controller="ChatController">
@@ -76,6 +78,7 @@
                     </div>
                 </div>
             </div>
+            <div modal-dialog></div>
         </div>
     </div>
     <div>

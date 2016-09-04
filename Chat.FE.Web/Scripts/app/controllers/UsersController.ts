@@ -6,19 +6,30 @@ module app.controllers {
     }
 
     export interface IUsersScope extends ng.IScope {
-        users: app.models.IUser[];
+        users: string[];
     }
 
     export class UsersController extends BaseController implements IUsersController {        
 
+        private _usersProxy: IUsersHubProxy;
         public static $inject = ['$scope', 'usersService'];
         constructor(private $scope: IUsersScope, private usersService: app.services.IUsersService) {            
             super();
-            this.getUsers();
+            this._usersProxy = $.connection.usersHub;
+            this.$scope.users = [];
+            this._usersProxy.client.newUsersLoggedIn = (login: string) => this.$scope.users.push(login);
+            this.getUsers();            
         }
 
         public getUsers(): void {
-            this.$scope.users = this.usersService.getUsers();
+            var self = this;
+            this.usersService.getUsers().then(function (result: any) {
+                var usersarr = result.data;
+                self.$scope.users = [];
+                angular.forEach(usersarr, function (value: string) {                    
+                    self.$scope.users.push(value);
+                });
+            });
         }
 
         public registerEvents(): void {

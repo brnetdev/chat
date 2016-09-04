@@ -1,19 +1,20 @@
 ﻿/// <reference path="../models/user.ts" />
 module app.services {
     export interface IUsersService {
-        getUsers(): app.models.IUser[];
+        getUsers(): ng.IPromise<string>;
     }
 
     export class UsersService implements IUsersService {
 
-        public static inject = ['$http'];
+        public static $inject = ['$http'];
         constructor(private $http: ng.IHttpService) {
         }
 
-        getUsers(): app.models.IUser[] {
+        getUsers(): ng.IPromise<string> {
             var users = [];            
-            users.push(new app.models.User());
-            return users;
+            debugger;
+            var self = this;
+            return this.$http.get('/Chat.FE.Web/api/Users');            
         }
     }
 

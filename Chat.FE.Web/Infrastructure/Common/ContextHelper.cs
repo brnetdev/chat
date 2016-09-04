@@ -45,13 +45,13 @@ namespace Chat.FE.Web.Infrastructure.Common
 
         public string Login
         {
-            get { return string.IsNullOrEmpty(_login) ? System.Web.HttpContext.Current.User.Identity.Name : _login; }
+            get { return string.IsNullOrEmpty(_login) ? System.Web.HttpContext.Current?.User.Identity.Name ?? "" : _login; }
             set { _login = value; }
         }
 
         public string Room
         {
-            get { return string.IsNullOrEmpty(_room) ? System.Web.HttpContext.Current.Session["room"].ToString() : _room; }
+            get { return string.IsNullOrEmpty(_room) ? System.Web.HttpContext.Current.Session["room"]?.ToString() ?? "" : _room; }
             set { this._room = value; }
         }
 

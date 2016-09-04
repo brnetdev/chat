@@ -29,9 +29,19 @@ namespace Chat.FE.Web
             BundlesConfig.RegisterBundles(BundleTable.Bundles);
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            GlobalFilters.Filters.Add(new System.Web.Mvc.AuthorizeAttribute());                        
+            GlobalFilters.Filters.Add(new System.Web.Mvc.AuthorizeAttribute());
+                                    
+
             var castleControllerFactory = new Castle.Windsor.Mvc.WindsorControllerFactory(IocConfig.Container.Kernel);
+            var castleDependencyResolver = new Infrastructure.SignalR.CastleDependencyResolver(IocConfig.Container);
+
             ControllerBuilder.Current.SetControllerFactory(castleControllerFactory);
+            
+
+            //DependencyResolver.SetResolver(castleControllerFactory);
+
+            //GlobalConfiguration.Configuration.DependencyResolver = castleDependencyResolver;
+            //WebApiConfig.Register(GlobalConfiguration.Configuration);
             QueueManager.CreateQueues();           
 
             var roleManager = AppIdentityRoleManager.Create();
@@ -56,6 +66,7 @@ namespace Chat.FE.Web
                 userManager.AddToRoleAsync(user.Id, "admin");
 
                 Application["users"] = new List<string>();
+                
 
             }
 

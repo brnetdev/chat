@@ -9,10 +9,11 @@ var app;
             }
             UsersService.prototype.getUsers = function () {
                 var users = [];
-                users.push(new app.models.User());
-                return users;
+                debugger;
+                var self = this;
+                return this.$http.get('/Chat.FE.Web/api/Users');
             };
-            UsersService.inject = ['$http'];
+            UsersService.$inject = ['$http'];
             return UsersService;
         }());
         services.UsersService = UsersService;

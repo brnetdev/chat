@@ -11,18 +11,8 @@ using Chat.BE.Contracts.Faults;
 namespace Chat.BE.Contracts.Proxies
 {
     public class RoomServiceProxy : ClientBase<IRoomService>, IRoomService
-    {
-        //private readonly ChannelFactory<IRoomService> _factory;
-        //private readonly IRoomService _proxy;
-
-        public RoomServiceProxy(): base("cliConf")
-        {
-            //_factory = new ChannelFactory<IRoomService>("cliConf");
-            
-            //_proxy = _factory.CreateChannel();
-            
-            
-        }
+    {        
+        public RoomServiceProxy(): base("cliConf") {}
 
         public void Add(RoomDTO room)
         {

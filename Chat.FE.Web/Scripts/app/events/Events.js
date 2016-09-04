@@ -11,6 +11,14 @@ var app;
             return RoomsEvents;
         }());
         events.RoomsEvents = RoomsEvents;
+        var UsersEvents = (function () {
+            function UsersEvents() {
+            }
+            UsersEvents.UserLoggedIn = 'userLoggedIn';
+            UsersEvents.GetUserDataRecived = 'userDataRecived';
+            return UsersEvents;
+        }());
+        events.UsersEvents = UsersEvents;
     })(events = app.events || (app.events = {}));
 })(app || (app = {}));
 //# sourceMappingURL=Events.js.map

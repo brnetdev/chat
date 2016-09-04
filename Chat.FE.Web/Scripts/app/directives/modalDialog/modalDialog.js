@@ -8,6 +8,11 @@ var app;
                 this.templateUrl = 'modalDialogView.html';
                 this.replace = true;
                 this.transclude = true;
+                this.link = function (scope, element, attrs, controller) {
+                    if (scope.show) {
+                        element.showModal();
+                    }
+                };
             }
             modalDialog.factory = function () {
                 var directive = function () { return new modalDialog(); };

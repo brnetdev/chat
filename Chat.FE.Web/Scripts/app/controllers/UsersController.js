@@ -12,13 +12,24 @@ var app;
         var UsersController = (function (_super) {
             __extends(UsersController, _super);
             function UsersController($scope, usersService) {
+                var _this = this;
                 _super.call(this);
                 this.$scope = $scope;
                 this.usersService = usersService;
+                this._usersProxy = $.connection.usersHub;
+                this.$scope.users = [];
+                this._usersProxy.client.newUsersLoggedIn = function (login) { return _this.$scope.users.push(login); };
                 this.getUsers();
             }
             UsersController.prototype.getUsers = function () {
-                this.$scope.users = this.usersService.getUsers();
+                var self = this;
+                this.usersService.getUsers().then(function (result) {
+                    var usersarr = result.data;
+                    self.$scope.users = [];
+                    angular.forEach(usersarr, function (value) {
+                        self.$scope.users.push(value);
+                    });
+                });
             };
             UsersController.prototype.registerEvents = function () {
             };

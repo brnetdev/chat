@@ -1,7 +1,10 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Chat.BE.Contracts;
+using Chat.BE.Contracts.Proxies;
 using Chat.FE.Web.Infrastructure.Common;
 using Microsoft.AspNet.SignalR.Hubs;
+using System.Web.Http.Controllers;
 using System.Web.Mvc;
 
 namespace Chat.FE.Web.App_Start
@@ -24,7 +27,13 @@ namespace Chat.FE.Web.App_Start
             _container.Register(Classes.FromThisAssembly()
                                  .BasedOn<IController>()
                                  .LifestyleTransient());
+
+            _container.Register(Classes.FromThisAssembly()
+                           .BasedOn<IHttpController>()
+                           .LifestylePerWebRequest());
+
             _container.Register(Component.For<IContextDataProvider>().ImplementedBy<ContextDataProvider>().LifestyleTransient());
+            _container.Register(Component.For<IRoomService>().ImplementedBy<RoomServiceProxy>());
         }
 
         public static void ReleaseContainer()

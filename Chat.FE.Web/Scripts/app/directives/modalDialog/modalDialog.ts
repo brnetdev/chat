@@ -10,6 +10,11 @@
             title: '@',
             
         };
+        link = function (scope: any, element: any, attrs: any, controller: any) {
+            if (scope.show) {
+                element.showModal();
+            }
+        }
 
         constructor() {
 

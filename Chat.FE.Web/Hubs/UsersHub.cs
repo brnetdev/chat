@@ -24,6 +24,7 @@ namespace Chat.FE.Web.Hubs
 
         public override Task OnConnected()
         {
+            
             return Task.Factory.StartNew(() =>
             {
 

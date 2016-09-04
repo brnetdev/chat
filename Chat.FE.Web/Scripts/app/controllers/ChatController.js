@@ -34,6 +34,8 @@ var app;
                 this.$scope.renderedMessages += msg;
                 this.$scope.$apply();
             };
+            ChatController.prototype.showDialog = function (user) {
+            };
             ChatController.prototype.registerEvents = function () {
             };
             ChatController.$inject = ['$scope'];

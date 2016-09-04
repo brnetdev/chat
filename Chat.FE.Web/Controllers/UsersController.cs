@@ -16,9 +16,9 @@ namespace Chat.FE.Web.Controllers
         
         public IEnumerable<string> Get()
         {
-            Contract.Ensures(Contract.ForAll<string>(Contract.Result<IEnumerable<string>>(), elem => !string.IsNullOrEmpty(elem) ));
-            
-            return new List<string>() {  };       
+            Contract.Ensures(Contract.ForAll<string>(Contract.Result<IEnumerable<string>>(), elem => !string.IsNullOrEmpty(elem) ));            
+            return ((List<string>)System.Web.HttpContext.Current.Application["users"]??new List<string>());       
+                
         }
 
         

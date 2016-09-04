@@ -8,7 +8,7 @@ using Chat.BE.Contracts.DTO;
 
 namespace Chat.BE.Contracts.Proxies
 {
-    class PeopleOnlineServiceProxy : ClientBase<IPeopleOnlineService>, IPeopleOnlineService
+    public class PeopleOnlineServiceProxy : ClientBase<IPeopleOnlineService>, IPeopleOnlineService
     {
         public PeopleOnlineServiceProxy(): base("cliPeopleOnlineConf")
         {
