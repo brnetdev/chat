@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Account/Views/Shared/_Layout.cshtml";
+}
+@model Chat.FE.Web.Areas.Account.Models.AddRoomVM
+
+<div class="row">
+    @using(Html.BeginForm())
+    {        
+        Html.EditorForModel();
+        <input type="submit" class="btn btn-info" /> 
+    }
+
+</div>

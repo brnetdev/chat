@@ -385,6 +385,8 @@
     <Content Include="Areas\Account\Views\SignIn\Login.cshtml" />
     <Content Include="Areas\Account\Views\Account\AddUser.cshtml" />
     <Content Include="Scripts\app\directives\modalDialog\modalDialogView.html" />
+    <Content Include="Areas\Account\Views\Shared\EditorTemplates\AddRoomVM.cshtml" />
+    <Content Include="Areas\Account\Views\RoomAdmin\Add.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1163,7 +1165,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Account\AccountAreaRegistration.cs" />
     <Compile Include="Areas\Account\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Account\Controllers\RoomAdminController.cs" />
     <Compile Include="Areas\Account\Controllers\SignInController.cs" />
+    <Compile Include="Areas\Account\Models\AddRoomVM.cs" />
     <Compile Include="Areas\Account\Models\AddUserNamePasswordVm.cs" />
     <Compile Include="Areas\Account\Models\UserNamePasswordVm.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1206,6 +1210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Account\Views\Rooms\" />
     <Folder Include="Infrastructure\Migrations\Models\" />
     <Folder Include="Scripts\app\filters\" />
     <Folder Include="Scripts\app\views\" />

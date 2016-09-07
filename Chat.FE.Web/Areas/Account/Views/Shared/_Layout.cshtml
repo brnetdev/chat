@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/Style.css" />
+    <link href="~/Content/Style.css" />  
 </head>
 <body>    
     <div class="container">                
@@ -13,11 +13,13 @@
     </div>
     @*//@Scripts.Render("~/Scripts/jquery")*@
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
     <script src="~/signalr/js"></script>    
     <script>        
         $.hubConnection().logging = true;
-        $.hubConnection(@Url.Content("~")).start({ jsonp: true });        
+        $.hubConnection(@Url.Content("~")).start({ jsonp: true });                
     </script>
     @*@Scripts.Render("~/Scripts/Bootstrap")*@
     
