@@ -52,11 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\ProxiesInstaller.cs" />
+    <Compile Include="DTO\MessageDTO.cs" />
     <Compile Include="DTO\PersonOnlineDTO.cs" />
     <Compile Include="DTO\RoomDTO.cs" />
     <Compile Include="Faults\FaultDataContract.cs" />
     <Compile Include="Proxies\PeopleOnlineServiceProxy.cs" />
     <Compile Include="Proxies\RoomServiceProxy.cs" />
+    <Compile Include="Services\IHistoryService.cs" />
     <Compile Include="Services\IPeopleOnlineService.cs" />
     <Compile Include="Services\IRoomService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

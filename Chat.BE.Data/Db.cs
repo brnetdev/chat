@@ -14,6 +14,7 @@ namespace Chat.BE.Data
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<OnlinePerson> OnlinePeople { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         public Db() : base(nameOrConnectionString: "cs")
         {

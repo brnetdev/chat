@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Db.cs" />
+    <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Room.cs" />
     <Compile Include="Mappings\RoomEntityConfiguration.cs" />
@@ -65,6 +66,10 @@
     <Compile Include="Migrations\201608312118163_3108.cs" />
     <Compile Include="Migrations\201608312118163_3108.Designer.cs">
       <DependentUpon>201608312118163_3108.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609222202427_MessagesUpdate.cs" />
+    <Compile Include="Migrations\201609222202427_MessagesUpdate.Designer.cs">
+      <DependentUpon>201609222202427_MessagesUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608312118163_3108.resx">
       <DependentUpon>201608312118163_3108.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609222202427_MessagesUpdate.resx">
+      <DependentUpon>201609222202427_MessagesUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

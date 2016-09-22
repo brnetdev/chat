@@ -18,7 +18,8 @@ namespace Chat.FE.Web.Areas.Account.Controllers
     
         public ActionResult Add()
         {
-            return View();
+            AddRoomVM vm = new AddRoomVM();
+            return View(vm);
         }
 
         [HttpPost]

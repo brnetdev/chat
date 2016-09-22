@@ -99,6 +99,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HistoryService.svc" />
     <Content Include="RoomService.svc" />
     <Content Include="PeopleOnlineService.svc" />
     <Content Include="Web.config">
@@ -106,6 +107,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HistoryService.svc.cs">
+      <DependentUpon>HistoryService.svc</DependentUpon>
+    </Compile>
     <Compile Include="PeopleOnlineService.svc.cs">
       <DependentUpon>PeopleOnlineService.svc</DependentUpon>
     </Compile>
@@ -132,6 +136,10 @@
     <ProjectReference Include="..\Chat.BE.Contracts\Chat.BE.Contracts.csproj">
       <Project>{F71568DA-FF24-40B1-A20C-AD9CBB842F33}</Project>
       <Name>Chat.BE.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chat.BE.Data\Chat.BE.Data.csproj">
+      <Project>{AF539A50-C043-4963-86AE-F8CE6029CBB7}</Project>
+      <Name>Chat.BE.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chat.BE.Domain\Chat.BE.Domain.csproj">
       <Project>{1B6AA7E6-D250-4BA3-AE43-A9BF7F4C61AB}</Project>
